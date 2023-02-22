@@ -6,7 +6,7 @@ from .auth_routes import validation_errors_to_error_messages
 
 note_routes = Blueprint("notes", __name__)
 
-@notes_routes.route("")
+@note_routes.route("")
 @login_required
 def get_all_user_notes():
   """
@@ -14,7 +14,7 @@ def get_all_user_notes():
   """
   return {"Notes": [note.to_dict() for note in current_user.notes]}
 
-@notes_routes.route("/<int:note_id")
+@note_routes.route("/<int:note_id>")
 @login_required
 def get_single_note(note_id):
   """

@@ -9,10 +9,18 @@ class User(db.Model, UserMixin):
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
+    # Database columns
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(40), nullable=False, unique=True)
+    first_name = db.Column(db.String(31))
+    last_name = db.Column(db.String(63))
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    created_at = db.Column(db.String(31), nullable=False)
+    updated_at = db.Column(db.String(31), nullable=False)
+
+    # Relationships
+    notes = db.relationship("Note", back_populates="user")
+    notebooks = db.relationship("Notebook", back_populates="user")
 
     @property
     def password(self):
@@ -25,9 +33,22 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
+    def simple_user(self):
+        return {
+            'id': self.id,
+            'first_name': self.id,
+            'last_name': self.id,
+        }
+
+
     def to_dict(self):
         return {
             'id': self.id,
-            'username': self.username,
-            'email': self.email
+            'first_name': self.first_name,
+            'last_name': self.last_name,
+            'email': self.email,
+            "notes": [note.simple_note() for note in self.notes],
+            "notebooks": [notebook.simple_notebook() for notebook in self.notebooks],
+            'created_at': self.created_at,
+            'updated_at': self.updated_at
         }

@@ -21,23 +21,26 @@ function NoteBody({ note }) {
   }, [dispatch, params.noteId, note.id])
 
   const updateNote = () => {
-
-    // dispatch(editNote(note.id, {
-    //   title,
-    //   body,
-    // }))
+    console.log("RUNNING UPDATE");
+    dispatch(editNote(note.id, {
+      title,
+      body,
+    }))
   }
+
   return (
     <div className="notebody-wrapper">
       <textarea
       className="notebody-title"
-      value={note.title}
+      value={title}
       onChange={e => setTitle(e.target.value)}
+      onMouseLeave={updateNote}
       />
       <textarea
       className="notebody-body"
-      value={note.body}
+      value={body}
       onChange={e => setBody(e.target.value)}
+      onMouseLeave={updateNote}
       />
     </div>
   )

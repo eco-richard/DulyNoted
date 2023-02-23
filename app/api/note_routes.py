@@ -20,7 +20,7 @@ def get_single_note(note_id):
   """
   Query for a single note and include the body of the note
   """
-  note = User.query.get(note_id)
+  note = Note.query.get(note_id)
   return note.single_note()
 
 @note_routes.route("", methods=["POST"])

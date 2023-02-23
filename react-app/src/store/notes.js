@@ -61,7 +61,7 @@ export function getAllNotes() {
 
 export function getSingleNote(noteId) {
   return async (dispatch) => {
-    const res = await fetch('/api/notes/noteId')
+    const res = await fetch(`/api/notes/${noteId}`)
 
     if (!res.ok) {
       return ERROR;

@@ -7,6 +7,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import SplashPage from "./components/SplashPage";
 import HomePage from "./components/HomePage";
+import Notes from "./components/Notes";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,9 @@ function App() {
           </Route>
           <Route exact path="/home">
             <HomePage />
+          </Route>
+          <Route path={["/notes/:noteId", "/new-note"]}>
+            <Notes />
           </Route>
         </Switch>
       )}

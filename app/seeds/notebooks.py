@@ -9,3 +9,4 @@ def seed_notebooks():
 
 
 def undo_notebooks():
+  pass

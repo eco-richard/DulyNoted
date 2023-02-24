@@ -31,12 +31,11 @@ def create_note():
   """
   Create a new note
   """
-  print("---------- IN CREATE ROUTE-----------")
   form = NoteForm()
   form['csrf_token'].data = request.cookies['csrf_token']
   data = form.data
 
-  notebook = db.session.query(User.notebooks).filter_by(id=current_user.id).order_by(Notebook.id).first()
+  default_notebook = db.session.query(User.notebooks).filter_by(id=current_user.id).order_by(Notebook.id).first()
   if form.validate_on_submit():
     note = Note(
       user=current_user,
@@ -57,14 +56,11 @@ def update_note(note_id):
   Update an existing note
   """
   note = Note.query.get_or_404(note_id)
-  print("---------NOTE:", note.to_dict(), "------------")
   form = NoteForm()
   form['csrf_token'].data = request.cookies['csrf_token']
 
   data = form.data
-  print("------------IN ROUTE!!!----------")
   if form.validate_on_submit():
-    print("------------IN ROUTE!!!----------")
     note.title = data["title"]
     note.body = data["body"]
     note.updated_at = data["updated_at"]

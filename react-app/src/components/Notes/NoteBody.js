@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getSingleNote, editNote } from "../../store/notes";
 
+import './NoteBody.css'
+
 function NoteBody({ note }) {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
@@ -32,6 +34,9 @@ function NoteBody({ note }) {
 
   return (
     <div className="notebody-wrapper">
+      <div className="notebook-select-bar">
+        {note.notebook?.title}
+      </div>
       <textarea
       className="notebody-title"
       value={title}

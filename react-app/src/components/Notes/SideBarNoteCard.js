@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux"
 import { useHistory } from "react-router-dom";
-import { getSingleNote } from "../../store/notes";
+import { getSingleNote, deleteNote } from "../../store/notes";
 
 function SideBarNoteCard({ note }) {
   const dispatch = useDispatch();
@@ -10,11 +10,20 @@ function SideBarNoteCard({ note }) {
     dispatch(getSingleNote(note.id))
     history.push(`/notes/${note.id}`);
   }
+  const deleteNoteEvent = () => {
+    dispatch(deleteNote(note.id))
+    history.push(`/home`)
+  }
 
   return (
     <div onClick={newNoteClick} className="sidebarnotecard-wrapper">
+      <div className="sbnc-header">
       <div className="sbnc-title">
         {note.title}
+      </div>
+      <div className="sbnc-delete-div">
+        <button className="sbnc-delete-button" onClick={deleteNoteEvent}>X</button>
+      </div>
       </div>
       <div className="sbnc-created-at">
         {note.created_at}

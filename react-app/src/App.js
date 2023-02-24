@@ -32,7 +32,7 @@ function App() {
           <Route exact path="/home">
             <HomePage />
           </Route>
-          <Route path={["/notes/:noteId", "/new-note"]}>
+          <Route path="/notes/:noteId">
             <Notes />
           </Route>
         </Switch>

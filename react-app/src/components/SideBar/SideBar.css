@@ -1,0 +1,55 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  height: 100vh;
+}
+
+.sidebar-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(26, 26, 26);
+}
+.sidebar-email {
+  color: rgb(204, 204, 204);
+}
+
+.sidebar-email p {
+  margin-left: 18px;
+}
+.sidebar-new-note {
+  padding: 10px 5px;
+}
+.sidebar-new-note-button {
+  display: flex;
+  background-color: rgb(75, 164, 65);
+  color: white;
+  width: 90%;
+  height: 30px;
+  border-radius: 15px;
+  justify-content: flex-start;
+  align-items: center;
+  border: none;
+  padding-left: 10px;
+}
+
+.sidebar-new-note-button i {
+  padding: 3px;
+}
+
+.sidebar-links {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* align-items: center; */
+}
+
+.sidebar-links div {
+  padding: 0px 10px;
+}
+
+.sidebar-links i {
+  padding: 5px;
+}

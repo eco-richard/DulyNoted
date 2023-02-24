@@ -1,0 +1,37 @@
+
+.notessidebar-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 400px;
+  background-color: rgb(245, 245, 245);
+}
+
+.notessidebar-header {
+  padding-left: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  border-bottom: .5px lightgrey solid;
+}
+
+.notessidebar-header i {
+  padding: 3px;
+}
+
+.sidebarnotecard-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 70px;
+  border-bottom: .5px lightgrey solid;
+  padding: 15px 10px;
+}
+.sidebarnotecard-wrapper:hover {
+  background-color: rgb(253, 253, 253);
+}
+
+.sbnc-created-at {
+  font-size: 13px;
+}

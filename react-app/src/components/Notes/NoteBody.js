@@ -38,13 +38,13 @@ function NoteBody({ note }) {
       className="notebody-title"
       value={title}
       onChange={e => setTitle(e.target.value)}
-      onKeyUp={updateNote}
+      onBlur={updateNote}
       />
       <textarea
       className="notebody-body"
       value={body}
       onChange={e => setBody(e.target.value)}
-      onKeyUp={updateNote}
+      onBlur={updateNote}
       />
     </div>
   )

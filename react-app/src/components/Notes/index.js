@@ -12,9 +12,7 @@ import NoteBody from './NoteBody';
 function Notes() {
   const dispatch = useDispatch();
   const location = useLocation();
-  console.log("LOCATION", location);
 
-  const user = useSelector(state => state.session.user);
   const notes = useSelector(state => state.note);
 
   useEffect(() => {

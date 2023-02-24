@@ -22,7 +22,7 @@ class Note(db.Model):
   def simple_note(self):
     return {
       "id": self.id,
-      "notebook": self.notebook.simple_notebook(),
+      "notebook": self.notebook.simple_notebook() if self.notebook != None else "",
       "title": self.title,
       "body": self.body,
     }
@@ -31,7 +31,7 @@ class Note(db.Model):
     return {
       "id": self.id,
       "user": self.user.simple_user(),
-      "notebook": self.notebook.simple_notebook(),
+      "notebook": self.notebook.simple_notebook() if self.notebook != None else "",
       "title": self.title,
       "body": self.body,
       "created_at": self.created_at,
@@ -42,7 +42,7 @@ class Note(db.Model):
     return {
       "id": self.id,
       "user": self.user.simple_user(),
-      "notebook": self.notebook.simple_notebook(),
+      "notebook": self.notebook.simple_notebook() if self.notebook != None else "",
       "title": self.title,
       # "body": self.body,
       "created_at": self.created_at,

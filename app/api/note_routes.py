@@ -35,6 +35,8 @@ def create_note():
   form = NoteForm()
   form['csrf_token'].data = request.cookies['csrf_token']
   data = form.data
+
+  notebook = db.session.query(User.notebooks).filter_by(id=current_user.id).order_by(Notebook.id).first()
   if form.validate_on_submit():
     note = Note(
       user=current_user,

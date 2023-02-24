@@ -1,6 +1,7 @@
 import CreateNodeSideBar from "./CreateNoteSideBar";
 import SideBarNoteCard from "./SideBarNoteCard";
 
+import './NoteSideBar.css'
 function NoteSideBar({ notes }) {
 
   let content;
@@ -17,7 +18,7 @@ function NoteSideBar({ notes }) {
   return (
     <div className="notessidebar-wrapper">
       <div className="notessidebar-header">
-        <h2>Notes</h2>
+        <h2> <i className="fa-solid fa-note-sticky"/> Notes</h2>
         <div className="">
           {notes.length} notes
         </div>

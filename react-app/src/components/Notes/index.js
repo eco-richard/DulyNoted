@@ -23,7 +23,7 @@ function Notes() {
   return (
     <>
     <SideBar />
-    <NoteSideBar notes={Object.values(notes.allNotes)}/>
+    <NoteSideBar notes={Object.values(notes.allNotes).reverse()}/>
     <NoteBody note={notes.singleNote}/>
     </>
   )

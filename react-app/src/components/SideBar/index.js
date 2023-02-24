@@ -8,7 +8,7 @@ function SideBar() {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector(state => state.session.user);
-  const singleNote = useSelector(state => state.session.user);
+  const singleNote = useSelector(state => state.note.singleNote);
   console.log("SINGLE NOTE: ", singleNote);
   const createNewNote = async () => {
     const date = new Date().toISOString().slice(0, 10);

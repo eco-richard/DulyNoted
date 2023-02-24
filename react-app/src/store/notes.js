@@ -85,7 +85,7 @@ export function createNote(note) {
     }
     const data = await res.json();
     dispatch(add(data));
-    return SUCCESS;
+    return data;
   }
 }
 

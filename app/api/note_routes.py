@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from app.models import User, Note, Notebook
 from app.forms import NoteForm
 from .auth_routes import validation_errors_to_error_messages
+from app.models import db
 
 
 note_routes = Blueprint("notes", __name__)
@@ -53,11 +54,14 @@ def update_note(note_id):
   Update an existing note
   """
   note = Note.query.get_or_404(note_id)
+  print("---------NOTE:", note.to_dict(), "------------")
   form = NoteForm()
   form['csrf_token'].data = request.cookies['csrf_token']
 
   data = form.data
+  print("------------IN ROUTE!!!----------")
   if form.validate_on_submit():
+    print("------------IN ROUTE!!!----------")
     note.title = data["title"]
     note.body = data["body"]
     note.updated_at = data["updated_at"]

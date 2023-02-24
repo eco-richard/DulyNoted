@@ -3,9 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { getAllNotes } from '../../store/notes';
 
+import SideBar from '../SideBar';
 import NewNote from "./NewNote";
 import NoteSideBar from './NoteSideBar';
 import NoteBody from './NoteBody';
+
 
 function Notes() {
   const dispatch = useDispatch();
@@ -23,6 +25,7 @@ function Notes() {
 
   return (
     <>
+    <SideBar />
     <NoteSideBar notes={Object.values(notes.allNotes)}/>
     {location.pathname === '/new-note' ? (
       <NewNote />

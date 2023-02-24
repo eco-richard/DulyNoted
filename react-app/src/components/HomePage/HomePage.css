@@ -1,0 +1,23 @@
+
+.home-container {
+  display: flex;
+  flex-direction: row;
+}
+
+/* .home-background-div {
+  height: 80vh;
+} */
+.home-background-div img {
+  width: 100%;
+  height: 100%;
+}
+
+.home-notes-div {
+  position: absolute;
+  top: 40vh;
+  margin-left: 20px;
+  width: 80%;
+  height: 400px;
+  background-color: white;
+  border: 2px black solid;
+}

@@ -35,3 +35,27 @@
 .sbnc-created-at {
   font-size: 13px;
 }
+
+.sbnc-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.sbnc-delete-div {
+  height: 16px;
+  width: 16px;
+}
+
+.sbnc-delete-div button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: inherit;
+  border: none;
+  height: 100%;
+  width: 100%;
+  font-size: 12px;
+  color: red;
+  cursor: pointer;
+}

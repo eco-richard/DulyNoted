@@ -85,6 +85,7 @@ export function createNote(note) {
     }
     const data = await res.json();
     dispatch(add(data));
+    console.log("DATA FROM STORE:", data);
     return data;
   }
 }

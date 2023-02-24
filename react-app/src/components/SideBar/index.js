@@ -18,7 +18,6 @@ function SideBar() {
     dispatch(getSingleNote(note));
     history.push(`/notes/${note.id}`);
   }
-  console.log("User:", user);
   return (
     <nav className="sidebar">
     <div className="sidebar-wrapper">

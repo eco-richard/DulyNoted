@@ -2,7 +2,6 @@ import CreateNodeSideBar from "./CreateNoteSideBar";
 import SideBarNoteCard from "./SideBarNoteCard";
 
 function NoteSideBar({ notes }) {
-  console.log("Notes: ", notes);
 
   let content;
   if (notes.length === 0) {

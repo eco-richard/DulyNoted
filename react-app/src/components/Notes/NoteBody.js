@@ -5,7 +5,6 @@ import { getSingleNote, editNote } from "../../store/notes";
 
 function NoteBody({ note }) {
   const user = useSelector(state => state.session.user);
-  console.log("USER:", user);
   const dispatch = useDispatch();
   const params = useParams();
   const [title, setTitle] = useState(note?.title);
@@ -24,7 +23,6 @@ function NoteBody({ note }) {
 
   const updateNote = () => {
     const date = new Date().toISOString().slice(0, 10);
-    console.log("RUNNING UPDATE");
     dispatch(editNote(note.id, {
       title,
       body,

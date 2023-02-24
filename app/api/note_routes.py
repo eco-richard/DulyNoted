@@ -31,16 +31,17 @@ def create_note():
   """
   Create a new note
   """
+  print("---------- IN CREATE ROUTE-----------")
   form = NoteForm()
   form['csrf_token'].data = request.cookies['csrf_token']
   data = form.data
   if form.validate_on_submit():
     note = Note(
-      user = current_user.id,
-      title = data["title"],
-      body = data["body"],
-      created_at = data["created_at"],
-      updated_at = data["updated_at"],
+      user=current_user,
+      title=data["title"],
+      body=data["body"],
+      created_at=data["created_at"],
+      updated_at=data["updated_at"],
     )
     db.session.add(note)
     db.session.commit()

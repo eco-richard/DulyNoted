@@ -12,7 +12,6 @@ import NoteBody from './NoteBody';
 function Notes() {
   const dispatch = useDispatch();
   const location = useLocation();
-  console.log("LOCATION", location);
 
   const notes = useSelector(state => state.note);
 

@@ -1,30 +1,54 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { getAllNotes } from '../../store/notes';
 
 import SideBar from '../SideBar';
 import NoteSideBar from './NoteSideBar';
 import NoteBody from './NoteBody';
 
+import './Notes.css'
+import { getNotebooks } from '../../store/notebooks';
 
 function Notes() {
   const dispatch = useDispatch();
   const location = useLocation();
+  const { notebookId } = useParams();
+  let notes = useSelector(state => state.note);
+  const notebooks = useSelector(state => state.notebook);
+  const singleNote = useSelector(state => state.note.singleNote);
+  const [fromNotebook, setFromNotebook] = useState(location.pathname.includes("notebook"));
 
-  const notes = useSelector(state => state.note);
-
+  console.log("LOCATION.INCLUDES:", location.pathname.includes("notebook"));
   useEffect(() => {
     dispatch(getAllNotes());
+    dispatch(getNotebooks());
   }, [dispatch])
 
-  if (Object.values(notes.allNotes).length === 0) return null;
+  let notebook;
+  if (notebookId !== undefined) {
+    notebook = notebooks[notebookId];
+    notes = notebook.notes;
+  } else {
+    notebook = null;
+    notes = Object.values(notes.allNotes);
+  }
+  useEffect(() => {
+    if (location.pathname.includes("notebook")) {
+      setFromNotebook(true);
+    }
+  })
+
+  if (Object.values(notes).length === 0) return null;
+  if (Object.values(notebooks).length === 0) return null;
 
   return (
     <>
     <SideBar />
-    <NoteSideBar notes={Object.values(notes.allNotes).reverse()}/>
-    <NoteBody note={notes.singleNote}/>
+    <div className='notes-container'>
+    <NoteSideBar fromNotebook={fromNotebook} notes={notes.reverse()} notebook={notebook}/>
+    <NoteBody note={singleNote}/>
+    </div>
     </>
   )
 }

@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import User, Note, Notebook
+from app.models import db, Notebook
 from app.forms import NotebookForm
 from .auth_routes import validation_errors_to_error_messages
 
@@ -9,10 +9,15 @@ notebook_routes = Blueprint("notebooks", __name__)
 @notebook_routes.route("")
 @login_required
 def get_all_user_notebooks():
-  """
-  Query for all of the current user's notebooks
-  """
-  return {"Notebooks": [notebook.to_dict() for notebook in current_user.notebooks]}
+    """
+    Query for all of the current user's notebooks
+    """
+    print("--------------- NOTEBOOKS: ----------------");
+    for notebook in current_user.notebooks:
+        print(notebook.to_dict())
+    print(" ")
+
+    return {"Notebooks": [notebook.to_dict() for notebook in current_user.notebooks]}
 
 
 @notebook_routes.route("/<int:notebook_id>")
@@ -25,7 +30,7 @@ def get_single_notebook(notebook_id):
   return notebook.to_dict()
 
 
-@notebook.routes.route("/", methods=["POST"])
+@notebook_routes.route("/", methods=["POST"])
 @login_required
 def create_notebook():
   """
@@ -69,3 +74,14 @@ def edit_notebook(notebook_id):
     return notebook.to_dict()
   return { "errors": validation_errors_to_error_messages(form.errors)}, 401
 
+@notebook_routes.route("/<int:notebook_id>", methods=["DELETE"])
+@login_required
+def delete_notebook(notebook_id):
+    notebook = Notebook.query.get(notebook_id)
+
+    if (notebook == None):
+        return { "error": f"No notebook exists with id {notebook_id}" }
+    db.session.delete(notebook)
+    db.session.commit()
+
+    return { "success": True, "status_code": 200 }

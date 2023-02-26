@@ -36,6 +36,7 @@ class User(db.Model, UserMixin):
     def simple_user(self):
         return {
             'id': self.id,
+            'email': self.email,
             'first_name': self.id,
             'last_name': self.id,
         }

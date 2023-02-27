@@ -7,6 +7,8 @@ import { authenticate } from "./store/session";
 import SplashPage from "./components/SplashPage";
 import HomePage from "./components/HomePage";
 import Notes from "./components/Notes";
+import Notebooks from "./components/Notebooks";
+import SingleNotebook from "./components/Notebooks/SingleNotebook";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,6 +35,15 @@ function App() {
             <HomePage />
           </Route>
           <Route path="/notes/:noteId">
+            <Notes />
+          </Route>
+          <Route exact path="/notebooks">
+            <Notebooks />
+          </Route>
+          <Route exact path="/notebooks/:notebookId">
+            <SingleNotebook />
+          </Route>
+          <Route exact path="/notebooks/:notebookId/notes/:noteId">
             <Notes />
           </Route>
         </Switch>

@@ -30,6 +30,7 @@ function NewNotebookForm() {
         }
         const [notebook, response] = await dispatch(addNotebook(notebookData))
         if (response === SUCCESS) {
+            closeModal();
             history.push(`/notebooks/${notebook.id}`);
         }
     }

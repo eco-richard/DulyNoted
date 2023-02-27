@@ -5,7 +5,7 @@ function HomePage() {
   const BACKGROUND_IMAGE_URL = "https://www.timeoutabudhabi.com/public/images/2020/06/24/Cafe-302.jpg";
 
   return (
-    <div className="home-container">
+    <>
     <SideBar/>
     <div className="home-main-wrapper">
       <div className="home-background-div">
@@ -17,7 +17,7 @@ function HomePage() {
 
       </div>
     </div>
-    </div>
+    </>
   );
 }
 

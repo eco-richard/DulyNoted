@@ -1,0 +1,28 @@
+.notebooks-wrapper {
+  display: flex;
+  flex-direction: column;
+  float: none;
+  overflow: hidden;
+  width: inherit;
+  margin: 5px 25px;
+}
+
+.notebook-bar-wrapper:hover {
+  background-color: lightgrey;
+}
+
+.notebook-bar-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.notebooks-body-bar-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+
+.notebooks-body {
+  margin: 10px 15px;
+}

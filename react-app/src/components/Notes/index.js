@@ -33,6 +33,7 @@ function Notes() {
     notebook = null;
     notes = Object.values(notes.allNotes);
   }
+
   useEffect(() => {
     if (location.pathname.includes("notebook")) {
       setFromNotebook(true);

@@ -5,8 +5,8 @@ const UPDATE_NOTEBOOK = "notebooks/UPDATE_NOTEBOOK";
 const REMOVE_NOTEBOOK = "notebooks/REMOVE_NOTEBOOK";
 
 // Return codes, used to check if the thunk threw un error
-const SUCCESS = 200;
-const ERROR = 400;
+export const SUCCESS = 200;
+export const ERROR = 400;
 
 // Action creators
 
@@ -58,7 +58,7 @@ export function addNotebook(notebookData) {
         const res = await fetch(`/api/notebooks`, {
             method: "POST",
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(notebookData) 
+            body: JSON.stringify(notebookData)
         })
         if (!res.ok) {
             return [null, ERROR];

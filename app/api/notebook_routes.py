@@ -30,8 +30,8 @@ def get_single_notebook(notebook_id):
   return notebook.to_dict()
 
 
-@notebook_routes.route("/", methods=["POST"])
-@login_required
+@notebook_routes.route("", methods=["POST"])
+# @login_required
 def create_notebook():
   """
   Create a new notebook

@@ -1,21 +1,37 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import { useModal } from '../../context/Modal'
+import { addNotebook, SUCCESS } from '../../store/notebooks';
 
 function NewNotebookForm() {
     const dispatch = useDispatch();
     const history = useHistory();
-    const [newNotebook, setNewNotebook] = useState("");
+    const [title, setTitle] = useState("");
     const [createDisabled, setCreateDisabled] = useState(true);
+    const { closeModal } = useModal();
 
     useEffect(() => {
-        if (newNotebook !== "") {
+        console.log(title)
+        if (title !== "") {
             setCreateDisabled(false)
+        } else {
+            setCreateDisabled(true);
         }
-    }, [newNotebook])
+    }, [title])
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+
+        const notebookData = {
+            title,
+            created_at: new Date().toISOString(),
+            updated_at: new Date().toISOString()
+        }
+        const [notebook, response] = await dispatch(addNotebook(notebookData))
+        if (response === SUCCESS) {
+            history.push(`/notebooks/${notebook.id}`);
+        }
     }
     return (
         <div className="new-notebook-modal-wrapper">
@@ -23,7 +39,8 @@ function NewNotebookForm() {
                 <div className='new-notebook-title'>
                     Create new notebook
                 </div>
-                <div className='new-notebook-close-out-button'>
+                <div className='new-notebook-close-out-button'
+                onClick={closeModal}>
                     <button>X</button>
                 </div>
             </div>
@@ -36,13 +53,14 @@ function NewNotebookForm() {
                     <input
                     className="new-notebook-input"
                     placeholder="Notebook name"
-                    value={newNotebook}
-                    onChange={(e) => setNewNotebook(e.target.value)}
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
                     />
                 </label>
             </div>
             <div className='new-notebook-footer'>
-                <button className='new-notebook-cancel'>
+                <button className='new-notebook-cancel'
+                onClick={closeModal}>
                     Cancel
                 </button>
                  <button className='new-notebook-create'

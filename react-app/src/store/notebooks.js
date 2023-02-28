@@ -120,6 +120,7 @@ export default function reducer(state = initialState, action) {
         case UPDATE_NOTEBOOK:
             newState = {...state};
             newState[action.notebook.id] = action.notebook;
+            return newState;
         case REMOVE_NOTEBOOK:
             newState = {...state};
             delete newState[action.notebookId];

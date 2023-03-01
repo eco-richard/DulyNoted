@@ -10,12 +10,51 @@ function MoveNoteForm({ note }) {
   const history = useHistory();
   const { closeModal } = useModal();
   const notebooks = Object.values(useSelector(state => state.notebook));
-  const currentNotebook = notebooks.filter(notebook => note.notebook.id === notebook.id)[0];
+  const currentNotebook = notebooks.filter(notebook => note.notebook?.id === notebook.id)[0];
   const [selectedNotebook, setSelectedNotebook] = useState(currentNotebook);
 
   useEffect(() => {
     dispatch(getNotebooks());
   }, [dispatch])
+
+  const addToNotebook = () => {
+    note.notebook_id = selectedNotebook.id
+    dispatch(updateNotebook(selectedNotebook))
+    dispatch(editNote(note.id, note))
+    history.push(`/notebooks/${selectedNotebook.id}`)
+    closeModal();
+  }
+
+  if (currentNotebook === undefined) {
+    return (
+      <div className="move-note-wrapper">
+      <div className="move-note-header">
+        <div className="move-note-title">
+          Move note to...
+        </div>
+        <div className="move-note-close-div">
+          <button className="move-note-close" onClick={closeModal}>X</button>
+        </div>
+      </div>
+      <div className="move-note-notebook-list">
+        {notebooks.map(notebook => (
+            <div key={notebook.id} className="move-note-notebook-item"
+            onClick={(e) => setSelectedNotebook(notebook)}>
+              {notebook.title}
+            </div>
+          ))}
+      </div>
+      <div className="move-notebook-footer">
+        <button className="move-note-cancel-button"
+        onClick={closeModal}
+        >Cancel</button>
+        <button className="move-note-submit-button"
+        onClick={addToNotebook}
+        >Done</button>
+      </div>
+    </div>
+    )
+  }
 
   const moveNote = () => {
     note.notebook_id = selectedNotebook.id;

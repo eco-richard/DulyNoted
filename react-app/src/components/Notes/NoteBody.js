@@ -14,6 +14,8 @@ function NoteBody({ note }) {
   const [title, setTitle] = useState(note.title || "");
   const [body, setBody] = useState(note.body || "");
 
+  console.log("NOTE: ", note);
+  console.log("NOTEBOOK FROM NOTEBODY: ", note.notebook);
   useEffect(() => {
     if (note.id !== params.noteId) {
       dispatch(getSingleNote(params.noteId));
@@ -42,7 +44,7 @@ function NoteBody({ note }) {
     <div className="notebody-wrapper">
       <div className="notebook-select-bar">
         <div className="note-notebook-title">
-        {note.notebook?.title}
+        {note.notebook === "" ? `No notebook` : note.notebook?.title}
         </div>
         <div className="change-notebook-button-div">
           <OpenModalButton

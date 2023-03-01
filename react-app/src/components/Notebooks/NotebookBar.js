@@ -1,7 +1,6 @@
 
 
 function NotebookBar( {notebook} ) {
-    console.log("NOTEBOOKS BAR");
     return (
         <div className="notebook-bar-wrapper">
             <div className="notebook-arrow">

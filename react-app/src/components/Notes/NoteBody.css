@@ -1,19 +1,34 @@
 .notebody-wrapper {
   display: flex;
   flex-direction: column;
-  width: 1200px;
+  width: 100%;
   overflow: hidden;
   padding: 20px;
 }
 
+.note-meat {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  width: 95%;
+}
 .notebody-title {
   height: 30px;
   font-size: 22px;
   resize: none;
+  border-bottom: none;
+  padding-bottom: 10px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .notebody-body {
   height: 100%;
   font-size: 16px;
   resize: none;
+  border-top: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+textarea {
+  outline: none;
 }

@@ -1,10 +1,20 @@
+import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import HomePage from "../HomePage";
 
 import './SplashPage.css'
 
 function SplashPage() {
+  const user = useSelector(state => state.session.user);
+  const history = useHistory();
+
+  if (user !== null) {
+    history.push(`/home`);
+  }
+
   return (
     <div className="splash-page-wrapper">
       <div className="splash-page-top-bar">

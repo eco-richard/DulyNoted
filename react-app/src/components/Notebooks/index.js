@@ -46,7 +46,7 @@ function Notebooks() {
             </div>
              <div className='notebooks-body'>
                 <div className='notebooks-body-bar-header'>
-                    <div classname='notebooks-bar-title'>
+                    <div className='notebooks-bar-title'>
                         TITLE
                     </div>
                     <div className='notebooks-bar-created-by'>

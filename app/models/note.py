@@ -44,7 +44,7 @@ class Note(db.Model):
       "user": self.user.simple_user(),
       "notebook": self.notebook.simple_notebook() if self.notebook != None else "",
       "title": self.title,
-      # "body": self.body,
+      "body": self.body,
       "created_at": self.created_at,
       "updated_at": self.updated_at,
     }

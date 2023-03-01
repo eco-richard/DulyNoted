@@ -16,10 +16,9 @@ function Notes() {
   const { notebookId } = useParams();
   let notes = useSelector(state => state.note);
   const notebooks = useSelector(state => state.notebook);
-  const singleNote = useSelector(state => state.note.singleNote);
+  let singleNote = useSelector(state => state.note.singleNote);
   const [fromNotebook, setFromNotebook] = useState(location.pathname.includes("notebook"));
 
-  console.log("LOCATION.INCLUDES:", location.pathname.includes("notebook"));
   useEffect(() => {
     dispatch(getAllNotes());
     dispatch(getNotebooks());
@@ -34,11 +33,17 @@ function Notes() {
     notes = Object.values(notes.allNotes);
   }
 
+  if (Object.values(singleNote).length === 0) {
+    singleNote = notes[notes.length - 1];
+  }
+
   useEffect(() => {
     if (location.pathname.includes("notebook")) {
       setFromNotebook(true);
+    } else {
+      setFromNotebook(false);
     }
-  })
+  }, [location.pathname])
 
   if (Object.values(notes).length === 0) return null;
   if (Object.values(notebooks).length === 0) return null;

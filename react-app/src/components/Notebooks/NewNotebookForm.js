@@ -12,7 +12,6 @@ function NewNotebookForm() {
     const { closeModal } = useModal();
 
     useEffect(() => {
-        console.log(title)
         if (title !== "") {
             setCreateDisabled(false)
         } else {

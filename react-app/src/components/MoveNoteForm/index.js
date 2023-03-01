@@ -18,12 +18,11 @@ function MoveNoteForm({ note }) {
   }, [dispatch])
 
   const moveNote = () => {
-    note.notebook = selectedNotebook;
+    note.notebook_id = selectedNotebook.id;
     const index = currentNotebook.notes.indexOf(note)
     currentNotebook.notes.splice(index, 1);
-    selectedNotebook.notes.push(note)
-    dispatch(updateNotebook(selectedNotebook.id, selectedNotebook))
-    // dispatch(updateNotebook(currentNotebook))
+    dispatch(updateNotebook(selectedNotebook))
+    dispatch(updateNotebook(currentNotebook))
     dispatch(editNote(note.id, note))
     history.push(`/notebooks/${selectedNotebook.id}`);
     closeModal();
@@ -44,11 +43,11 @@ function MoveNoteForm({ note }) {
       <div className="move-note-notebook-list">
         {notebooks.map(notebook => (
           notebook.id === selectedNotebook.id ? (
-            <div className="move-note-selected-notebook">
+            <div key={notebook.id} className="move-note-selected-notebook">
               {notebook.title}
             </div>
           ) : (
-            <div className="move-note-notebook-item"
+            <div key={notebook.id} className="move-note-notebook-item"
             onClick={(e) => setSelectedNotebook(notebook)}>
               {notebook.title}
             </div>

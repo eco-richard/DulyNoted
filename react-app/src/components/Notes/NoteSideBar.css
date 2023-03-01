@@ -59,3 +59,35 @@
   color: red;
   cursor: pointer;
 }
+
+.notessidebar-title {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.notebooks-actions-button {
+  height: 20px;
+  padding-right: 10px;
+  font-size: 20px;
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+.notebook-actions-dropdown-wrapper {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  border: 1px black solid;
+  top: 52px;
+  left: 476px;
+}
+
+.notebook-actions-dropdown-wrapper button {
+  font-size: 15px;
+  border: none;
+
+}

@@ -27,10 +27,12 @@ function NoteBody({ note }) {
   }, [note]);
 
   const updateNote = async () => {
+    console.log("NOTE FROM UPDATE NOTE: ", note);
     const date = new Date().toISOString().slice(0, 10);
     await dispatch(editNote(note.id, {
       title,
       body,
+      notebook_id: note.notebook.id,
       updated_at: date
     }))
     // dispatch(getSingleNote(note.id))

@@ -6,8 +6,8 @@ const UPDATE_NOTE = "notes/UPDATE_NOTES"
 const REMOVE_NOTE = "notes/REMOVE_NOTES"
 
 // Return codes
-const SUCCESS = 200
-const ERROR = 400;
+export const SUCCESS = 200
+export const ERROR = 400;
 
 // Action creators
 
@@ -85,7 +85,6 @@ export function createNote(note) {
     }
     const data = await res.json();
     dispatch(add(data));
-    console.log("DATA FROM STORE:", data);
     return data;
   }
 }
@@ -99,11 +98,11 @@ export function editNote(noteId, note) {
     })
 
     if (!res.ok) {
-      return ERROR;
+      return [null, ERROR];
     }
     const data = await res.json();
     dispatch(update(data));
-    return SUCCESS;
+    return [data, SUCCESS];
   }
 }
 

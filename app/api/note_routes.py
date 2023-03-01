@@ -46,7 +46,7 @@ def create_note():
     )
     db.session.add(note)
     db.session.commit()
-    return note.to_dict()
+    return note.single_note()
   return { "errors": validation_errors_to_error_messages(form.errors)}, 401
 
 @note_routes.route("/<int:note_id>", methods=["PUT"])
@@ -63,9 +63,10 @@ def update_note(note_id):
   if form.validate_on_submit():
     note.title = data["title"]
     note.body = data["body"]
+    note.notebook_id = data["notebook_id"]
     note.updated_at = data["updated_at"]
     db.session.commit()
-    return note.to_dict()
+    return note.single_note()
   return { "errors": validation_errors_to_error_messages(form.errors)}, 401
 
 @note_routes.route("/<int:note_id>", methods=["DELETE"])

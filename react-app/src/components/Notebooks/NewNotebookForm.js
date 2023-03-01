@@ -12,7 +12,6 @@ function NewNotebookForm() {
     const { closeModal } = useModal();
 
     useEffect(() => {
-        console.log(title)
         if (title !== "") {
             setCreateDisabled(false)
         } else {
@@ -30,6 +29,7 @@ function NewNotebookForm() {
         }
         const [notebook, response] = await dispatch(addNotebook(notebookData))
         if (response === SUCCESS) {
+            closeModal();
             history.push(`/notebooks/${notebook.id}`);
         }
     }

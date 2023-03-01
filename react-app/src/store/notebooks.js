@@ -71,6 +71,8 @@ export function addNotebook(notebookData) {
 
 export function updateNotebook(notebookData) {
     return async (dispatch) => {
+        console.log("NOTEBOOK DATA FROMM UPDATENOTEBOOK: ", notebookData);
+
         const res = await fetch(`/api/notebooks/${notebookData.id}`, {
             method: "PUT",
             headers: {"Content-Type": "application/json"},
@@ -120,6 +122,7 @@ export default function reducer(state = initialState, action) {
         case UPDATE_NOTEBOOK:
             newState = {...state};
             newState[action.notebook.id] = action.notebook;
+            return newState;
         case REMOVE_NOTEBOOK:
             newState = {...state};
             delete newState[action.notebookId];

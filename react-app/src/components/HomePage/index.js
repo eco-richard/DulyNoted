@@ -1,7 +1,9 @@
+import { useSelector } from "react-redux";
 import SideBar from "../SideBar";
 
 import './HomePage.css'
 function HomePage() {
+  const user = useSelector(state => state.session.user);
   const BACKGROUND_IMAGE_URL = "https://www.timeoutabudhabi.com/public/images/2020/06/24/Cafe-302.jpg";
 
   return (

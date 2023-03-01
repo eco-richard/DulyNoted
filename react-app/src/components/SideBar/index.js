@@ -17,7 +17,6 @@ function SideBar() {
       created_at: date,
       updated_at: date
     }))
-    console.log("NOTE FROM CREATE:", note);
     dispatch(getSingleNote(note));
     history.push(`/notes/${note.id}`);
   }

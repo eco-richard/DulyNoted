@@ -4,7 +4,6 @@ import SideBarNoteCard from "./SideBarNoteCard";
 import './NoteSideBar.css'
 function NoteSideBar({ fromNotebook, notes, notebook }) {
 
-  console.log("fromNotebooks from NoteSideBar: ", fromNotebook)
   let content;
   if (notes.length === 0) {
     content = <CreateNodeSideBar />

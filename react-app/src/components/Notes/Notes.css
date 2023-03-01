@@ -1,4 +1,4 @@
 .notes-container {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 375px auto;
 }

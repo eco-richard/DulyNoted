@@ -19,7 +19,6 @@ function Notes() {
   const singleNote = useSelector(state => state.note.singleNote);
   const [fromNotebook, setFromNotebook] = useState(location.pathname.includes("notebook"));
 
-  console.log("LOCATION.INCLUDES:", location.pathname.includes("notebook"));
   useEffect(() => {
     dispatch(getAllNotes());
     dispatch(getNotebooks());
@@ -37,8 +36,10 @@ function Notes() {
   useEffect(() => {
     if (location.pathname.includes("notebook")) {
       setFromNotebook(true);
+    } else {
+      setFromNotebook(false);
     }
-  })
+  }, [location.pathname])
 
   if (Object.values(notes).length === 0) return null;
   if (Object.values(notebooks).length === 0) return null;

@@ -1,0 +1,20 @@
+
+.home-note-card-wrapper {
+  display: flex;
+  flex-direction: column;
+  border: 1px black solid;
+  cursor: pointer;
+  margin: 10px;
+  width: 200px;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.home-note-card-wrapper:hover {
+  box-shadow: 5px 5px 5px grey
+}
+
+.home-note-card-preview {
+  padding: 9px;
+}

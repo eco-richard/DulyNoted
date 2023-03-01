@@ -16,8 +16,39 @@
   position: absolute;
   top: 40vh;
   margin-left: 20px;
-  width: 80%;
+  width: 55%;
   height: 400px;
   background-color: white;
-  border: 2px black solid;
+  border: 1px grey solid;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+}
+
+.home-notes-container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.home-notes-title {
+  margin-left: 17px;
+  font-size: 21px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.scratch-pad-div {
+  position: absolute;
+  top: 40vh;
+  left: 74.5vw;
+  width: 25%;
+  height: 400px;
+  background-color: rgb(255, 243, 183);
+  border: 1px grey solid;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
 }

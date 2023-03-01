@@ -15,10 +15,10 @@ function NoteBody({ note }) {
   const [body, setBody] = useState(note.body || "");
 
   useEffect(() => {
-    // if (note.id !== params.noteId) {
-    //   dispatch(getSingleNote(params.noteId));
-    // }
-    dispatch(getSingleNote(note.id));
+    if (note.id !== params.noteId) {
+      dispatch(getSingleNote(params.noteId));
+    }
+    // dispatch(getSingleNote(note.id));
   }, [dispatch, note.id])
 
   useEffect(() => {

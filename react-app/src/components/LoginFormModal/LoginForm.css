@@ -1,0 +1,108 @@
+.login-modal-wrapper {
+  height: 600px;
+  width: 460px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-header-logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 35px;
+  margin-bottom: 35px;
+}
+
+.login-title {
+  font-size: 25px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  padding: 15px;
+}
+
+.login-text {
+  font-size: 15px;
+}
+
+.login-form-div {
+  height: 180px;
+  width: 308px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+.login-form-div form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  width: 100%;
+}
+
+.login-form-div input {
+  height: 40px;
+  width: 300px;
+  font-size: 16px;
+}
+
+.login-form-div button {
+  height: 40px;
+  width: 100%;
+  font-size: 16px;
+  margin: 2px;
+  cursor: pointer;
+}
+
+.buttons-div {
+  width: 100%;
+  padding: 10px;
+}
+
+.login-button {
+  background-color: teal;
+  border: none;
+  color: white;
+  width: 100%;
+}
+
+.demo-button {
+  background-color: white;
+  color: teal;
+  border: .5px solid black;
+}
+
+.login-button:hover {
+  background-color: rgb(1, 178, 178);
+}
+
+.demo-button:hover {
+  color: rgb(1, 178, 178)
+}
+
+.no-account-div {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-account-create {
+  padding: 5px;
+}
+
+.no-account-create button {
+  background-color: white;
+  color: teal;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.no-account-create button:hover {
+  text-decoration: underline;
+}

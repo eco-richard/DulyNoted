@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation, useParams } from 'react-router-dom';
+import { useHistory, useLocation, useParams } from 'react-router-dom';
 import { getAllNotes } from '../../store/notes';
 
 import SideBar from '../SideBar';
@@ -12,7 +12,9 @@ import { getNotebooks } from '../../store/notebooks';
 
 function Notes() {
   const dispatch = useDispatch();
+  const user = useSelector(state => state.session.user);
   const location = useLocation();
+  const history = useHistory();
   const { notebookId } = useParams();
   let notes = useSelector(state => state.note);
   const notebooks = useSelector(state => state.notebook);
@@ -49,13 +51,13 @@ function Notes() {
   if (Object.values(notebooks).length === 0) return null;
 
   return (
-    <>
+    <div className='max-container'>
     <SideBar />
     <div className='notes-container'>
     <NoteSideBar fromNotebook={fromNotebook} notes={notes.reverse()} notebook={notebook}/>
     <NoteBody note={singleNote}/>
     </div>
-    </>
+    </div>
   )
 }
 

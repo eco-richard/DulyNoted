@@ -19,7 +19,9 @@ function SplashPage() {
     <div className="splash-page-wrapper">
       <div className="splash-page-top-bar">
         <div className="splash-page-logo">
-        <i class="fa-solid fa-shrimp"></i> DulyNoted
+        <i className="fa-solid fa-shrimp fa-2x"></i>
+        &nbsp;
+        DulyNoted
         </div>
         <div className="splash-login-button-wrapper">
           <OpenModalButton
@@ -31,7 +33,7 @@ function SplashPage() {
       </div>
       <div className="splash-page-info">
         <div className="splash-page-info-header">
-          <h1>Tame your work organize your life</h1>
+          <h1>Tame your work, organize your life</h1>
         </div>
         <div className="splash-info-text">
           <p>Remember everything and tackle any project with your notes, tasks, and schedule all in one place</p>

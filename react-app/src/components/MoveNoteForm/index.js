@@ -5,6 +5,8 @@ import { editNote } from "../../store/notes";
 import { useModal } from "../../context/Modal";
 import { useHistory } from "react-router-dom";
 
+import './MoveNoteForm.css';
+
 function MoveNoteForm({ note }) {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -33,22 +35,24 @@ function MoveNoteForm({ note }) {
           Move note to...
         </div>
         <div className="move-note-close-div">
-          <button className="move-note-close" onClick={closeModal}>X</button>
+          <button className="move-note-close" onClick={closeModal}>
+            <i class="fa-solid fa-x"></i>
+          </button>
         </div>
       </div>
       <div className="move-note-notebook-list">
         {notebooks.map(notebook => (
-            <div key={notebook.id} className="move-note-notebook-item"
+            <div key={notebook.id} className={notebook.id === selectedNotebook?.id ? `move-note-notebook-item-selected`: `move-note-notebook-item`}
             onClick={(e) => setSelectedNotebook(notebook)}>
               {notebook.title}
             </div>
           ))}
       </div>
       <div className="move-notebook-footer">
-        <button className="move-note-cancel-button"
+        <button className="new-notebook-cancel"
         onClick={closeModal}
         >Cancel</button>
-        <button className="move-note-submit-button"
+        <button className="new-notebook-create"
         onClick={addToNotebook}
         >Done</button>
       </div>

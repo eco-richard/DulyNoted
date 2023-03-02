@@ -1,0 +1,75 @@
+.new-notebook-modal-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 310px;
+  width: 550px;
+  justify-content: space-evenly;
+}
+.new-notebook-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0px 25px;
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
+
+.new-notebook-close-out-button button {
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+}
+
+.new-notebook-title {
+  font-size: 20px;
+}
+
+.new-notebook-info {
+  padding: 5px 25px;
+  font-size: 15px;
+  margin-bottom: 15px;
+}
+
+.new-notebook-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 5px 25px;
+}
+
+.new-notebook-input-wrapper label {
+  padding: 5px;
+}
+
+.new-notebook-input {
+  height: 30px;
+  font-size: 17px;
+}
+
+.new-notebook-footer {
+  border-top: 1px solid grey;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px 0px;
+  padding-right: 25px;
+  height: 40px
+}
+
+.new-notebook-footer button {
+  height: 35px;
+  width: 70px;
+  margin: 5px;
+  border-radius: 10px;
+}
+
+.new-notebook-cancel {
+  background-color: white;
+  color: black;
+  border: .5px solid black;
+}
+
+.new-notebook-create {
+  background-color: lightgrey;
+  color: white;
+}

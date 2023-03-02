@@ -1,0 +1,67 @@
+
+.move-note-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 350px;
+  width: 400px;
+}
+
+.move-note-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 15px 25px;
+  padding-bottom: 15px;
+  border-bottom: 0.5px solid grey;
+}
+
+.move-note-title {
+  font-size: 21px;
+}
+
+.move-note-close-div button {
+  background-color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.move-note-notebook-list {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 25px;
+  justify-content: space-between;
+}
+
+.move-note-notebook-item {
+  padding: 6px 3px;
+  cursor: pointer;
+}
+
+.move-note-notebook-item-selected {
+  padding: 6px 3px;
+  background-color: lightgrey;
+  cursor: pointer;
+}
+
+.move-notebook-footer {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  margin: 20px 25px;
+}
+
+.move-notebook-footer button {
+  height: 35px;
+  width: 70px;
+  margin: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.new-notebook-create:hover {
+  background-color: grey;
+}
+

@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { updateNotebook } from "../../store/notebooks";
 
+import './EditNotebookModal.css'
 function EditNotebookModal({ notebook }) {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
@@ -20,17 +21,18 @@ function EditNotebookModal({ notebook }) {
   return (
     <div className="edit-notebook-modal-wrapper">
       <div className="edit-notebook-modal-header">
-        <h2>Rename Notebook</h2>
+        Rename Notebook
+        <button onClick={closeModal}><i class="fa-solid fa-x"></i></button>
       </div>
       <div className="edit-notebook-modal-input-div">
         <label>
-          Name
+          Name:
+        </label>
           <input
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           />
-        </label>
       </div>
       <div className="edit-notebook-modal-submit">
         <button onClick={handleSubmit}>Submit</button>

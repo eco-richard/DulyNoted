@@ -4,6 +4,8 @@ import { useHistory } from 'react-router-dom'
 import { useModal } from '../../context/Modal'
 import { addNotebook, SUCCESS } from '../../store/notebooks';
 
+import './NewNotebookForm.css';
+
 function NewNotebookForm() {
     const dispatch = useDispatch();
     const history = useHistory();
@@ -41,7 +43,7 @@ function NewNotebookForm() {
                 </div>
                 <div className='new-notebook-close-out-button'
                 onClick={closeModal}>
-                    <button>X</button>
+                    <button><i class="fa-solid fa-x"></i></button>
                 </div>
             </div>
             <div className="new-notebook-info">
@@ -49,14 +51,14 @@ function NewNotebookForm() {
             </div>
             <div className="new-notebook-input-wrapper">
                 <label>
-                    Name:
-                    <input
-                    className="new-notebook-input"
-                    placeholder="Notebook name"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    />
+                    Name
                 </label>
+                <input
+                className="new-notebook-input"
+                placeholder="Notebook name"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                />
             </div>
             <div className='new-notebook-footer'>
                 <button className='new-notebook-cancel'

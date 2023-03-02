@@ -33,7 +33,7 @@ function Notebooks() {
                 <h2>Notebooks</h2>
                 <div className='notebooks-number-new'>
                     <div className='notebooks-header-number'>
-                        {notebooks.length}
+                        {notebooks.length} notebooks
                     </div>
                     <div className='notebooks-header-new'>
                         <OpenModalButton

@@ -26,7 +26,7 @@ function Notebooks() {
     }
 
     return (
-        <>
+        <div className='max-container'>
         <SideBar />
         <div className='notebooks-wrapper'>
             <div className='notebooks-header'>
@@ -75,7 +75,7 @@ function Notebooks() {
                  ))}
             </div>
         </div>
-        </>
+        </div>
     )
 }
 

@@ -24,10 +24,10 @@ function SingleNotebook() {
   const notebook = notebooks[params.notebookId];
 
   return (
-    <>
+    <div className="max-container">
     <SideBar />
     <NoteSideBar fromNotebook={true} notes={notebook?.notes} notebook={notebook} />
-    </>
+    </div>
   )
 }
 

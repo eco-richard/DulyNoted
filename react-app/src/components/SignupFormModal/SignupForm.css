@@ -1,0 +1,42 @@
+
+
+.signup-form-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 180px;
+  width: 308px;
+  padding-bottom: 20px;
+}
+
+.signup-form-div form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  width: 100%;
+}
+
+.signup-form-div input {
+  height: 40px;
+  width: 300px;
+  font-size: 16px;
+  margin: 2px 0px;
+}
+
+.signup-form-div button {
+  height: 40px;
+  width: 100%;
+  font-size: 16px;
+  margin: 2px;
+  cursor: pointer;
+}
+
+.no-account-signup-div {
+  margin-top: 35px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

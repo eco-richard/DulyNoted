@@ -1,0 +1,44 @@
+.edit-notebook-modal-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 150px;
+  width: 300px;
+  justify-content: space-between;
+}
+
+.edit-notebook-modal-header {
+  font-size: 21px;
+  margin: 15px 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.edit-notebook-modal-header button {
+  border: none;
+  background-color: white;
+  cursor: pointer;
+}
+
+.edit-notebook-modal-input-div {
+  margin: 5px 15px;
+  height: 30px;
+}
+
+.edit-notebook-modal-input-div input {
+  height: 30px;
+}
+
+.edit-notebook-modal-submit button {
+  height: 35px;
+  width: 70px;
+  margin: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.edit-notebook-modal-submit {
+  display: flex;
+  justify-content: flex-end;
+  padding: 5px;
+}

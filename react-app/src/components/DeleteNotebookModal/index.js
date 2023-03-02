@@ -3,6 +3,8 @@ import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import { deleteNotebook } from "../../store/notebooks";
 
+import './DeleteNotebookModal.css';
+
 function DeleteNotebookModal({ notebook }) {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -24,9 +26,9 @@ function DeleteNotebookModal({ notebook }) {
         Are you sure you want to delete this notebook? All notes associated with this will be deleted aswell.
       </div>
       <div className="delete-notebook-buttons">
-        <button className="delete-nb-cancel"
+        <button className="new-notebook-cancel"
         onClick={closeModal}>Cancel</button>
-        <button className="delete-confirm-button"
+        <button className="new-notebook-create"
         onClick={confirmDelete}>Delete</button>
       </div>
     </div>

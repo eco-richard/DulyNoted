@@ -19,7 +19,7 @@ function SplashPage() {
     <div className="splash-page-wrapper">
       <div className="splash-page-top-bar">
         <div className="splash-page-logo">
-
+        <i class="fa-solid fa-shrimp"></i> DulyNoted
         </div>
         <div className="splash-login-button-wrapper">
           <OpenModalButton

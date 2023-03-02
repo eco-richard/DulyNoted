@@ -15,7 +15,8 @@ class Notebook(db.Model):
 
   # Relationships
   user = db.relationship("User", back_populates="notebooks")
-  notes = db.relationship("Note", back_populates="notebook")
+  notes = db.relationship("Note", back_populates="notebook",
+                          cascade="all, delete-orphan");
 
   def simple_notebook(self):
     return {

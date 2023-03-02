@@ -83,7 +83,7 @@ function SignupFormModal() {
 				</div>
 			</form>
 			</div>
-			<div className="no-account-div">
+			<div className="no-account-signup-div">
 				<div className="no-account-text">
 					Already have an account?
 				</div>

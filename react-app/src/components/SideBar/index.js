@@ -28,7 +28,7 @@ function SideBar() {
         <div className="sidebar-email-image-div">
 
         </div>
-        <p><i class="fa-solid fa-user-pen"></i> {user.email}</p>
+        <p><i className="fa-solid fa-user-pen"></i> {user.email}</p>
       </div>
       <div className="sidebar-new-note">
         <button className="sidebar-new-note-button"

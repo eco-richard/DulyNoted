@@ -34,7 +34,7 @@ function NoteBody({ note }) {
     await dispatch(editNote(note.id, {
       title,
       body,
-      notebook_id: note.notebook.id,
+      notebook_id: note?.notebook?.id || null,
       updated_at: date
     }))
     // dispatch(getSingleNote(note.id))

@@ -15,8 +15,6 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(63))
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    created_at = db.Column(db.String(31), nullable=False)
-    updated_at = db.Column(db.String(31), nullable=False)
 
     # Relationships
     notes = db.relationship("Note", back_populates="user")
@@ -50,6 +48,4 @@ class User(db.Model, UserMixin):
             'email': self.email,
             "notes": [note.simple_note() for note in self.notes],
             "notebooks": [notebook.simple_notebook() for notebook in self.notebooks],
-            'created_at': self.created_at,
-            'updated_at': self.updated_at
         }

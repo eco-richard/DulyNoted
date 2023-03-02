@@ -7,20 +7,17 @@ def seed_users():
         first_name='Demo',
         email='demo@aa.io',
         password='password',
-        created_at='2023-02-22',
-        updated_at='2023-02-22')
+    )
     marnie = User(
         first_name='marnie',
         email='marnie@aa.io',
         password='password',
-        created_at='2023-02-22',
-        updated_at='2023-02-22')
+    )
     bobbie = User(
         first_name='bobbie',
         email='bobbie@aa.io',
         password='password',
-        created_at='2023-02-22',
-        updated_at='2023-02-22')
+    )
 
     db.session.add(demo)
     db.session.add(marnie)

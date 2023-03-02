@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { signUp } from "../../store/session";
+import OpenModalButton from "../OpenModalButton";
+import LoginFormModal from "../LoginFormModal";
+
 import "./SignupForm.css";
 
 function SignupFormModal() {
@@ -29,8 +32,19 @@ function SignupFormModal() {
 	};
 
 	return (
-		<>
-			<h1>Sign Up</h1>
+		<div className="login-modal-wrapper">
+			<div className="login-header-logo">
+				<div className="login-logo">
+					<i className="fa-solid fa-shrimp fa-5x"/>
+				</div>
+				<div className="login-title">
+					DulyNoted
+				</div>
+				<div className="login-text">
+					You aren't going to remember, just write it down.
+				</div>
+			</div>
+			<div className="signup-form-div">
 			<form onSubmit={handleSubmit}>
 				<ul>
 					{errors.map((error, idx) => (
@@ -38,35 +52,49 @@ function SignupFormModal() {
 					))}
 				</ul>
 				<label>
-					Email
 					<input
 						type="text"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 						required
+						placeholder="Email"
 					/>
 				</label>
 				<label>
-					Password
 					<input
 						type="password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
 						required
+						placeholder="Password"
 					/>
 				</label>
 				<label>
-					Confirm Password
 					<input
 						type="password"
 						value={confirmPassword}
 						onChange={(e) => setConfirmPassword(e.target.value)}
 						required
+						placeholder="Confirm Password"
 					/>
 				</label>
-				<button type="submit">Sign Up</button>
+				<div className="buttons-div">
+				<button type="submit" className="login-button">Sign Up</button>
+				</div>
 			</form>
-		</>
+			</div>
+			<div className="no-account-div">
+				<div className="no-account-text">
+					Already have an account?
+				</div>
+				<div className="no-account-create">
+					<OpenModalButton
+					modalComponent={<LoginFormModal />}
+					buttonText="Sign in"
+					/>
+				</div>
+			</div>
+		</div>
 	);
 }
 

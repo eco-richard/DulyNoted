@@ -12,18 +12,19 @@ import { getNotebooks } from '../../store/notebooks';
 
 function Notes() {
   const dispatch = useDispatch();
-  const user = useSelector(state => state.session.user);
   const location = useLocation();
-  const history = useHistory();
+  const user = useSelector(state => state.session.user)
   const { notebookId } = useParams();
   let notes = useSelector(state => state.note);
   const notebooks = useSelector(state => state.notebook);
   let singleNote = useSelector(state => state.note.singleNote);
   const [fromNotebook, setFromNotebook] = useState(location.pathname.includes("notebook"));
+  const [loadedNotes, setLoadedNotes] = useState(false);
 
   useEffect(() => {
     dispatch(getAllNotes());
     dispatch(getNotebooks());
+    setLoadedNotes(true);
   }, [dispatch])
 
   let notebook;
@@ -35,7 +36,12 @@ function Notes() {
     notes = Object.values(notes.allNotes);
   }
 
-  if (Object.values(singleNote).length === 0) {
+  useEffect(() => {
+    if (user.notes.length === 0) {
+      notes = null;
+    }
+  }, [])
+  if (Object.values(singleNote).length === 0 && notes.length > 0) {
     singleNote = notes[notes.length - 1];
   }
 
@@ -47,8 +53,8 @@ function Notes() {
     }
   }, [location.pathname])
 
-  if (Object.values(notes).length === 0) return null;
-  if (Object.values(notebooks).length === 0) return null;
+  if (!loadedNotes) return null;
+  // if (Object.values(notebooks).length === 0) return null;
 
   return (
     <div className='max-container'>

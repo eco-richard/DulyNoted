@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getNotebooks } from '../../store/notebooks';
@@ -14,12 +14,13 @@ function Notebooks() {
     const dispatch = useDispatch();
     const history = useHistory();
     const notebooks = Object.values(useSelector(state => state.notebook));
-
+    const [loadNotebooks, setLoadNotebooks] = useState(false);
     useEffect(() => {
         dispatch(getNotebooks());
+        setLoadNotebooks(true);
     }, [dispatch])
 
-    if (notebooks.length === 0) return null;
+    if (!loadNotebooks) return null;
 
     const openNotebooks = (notebook) => {
         history.push(`/notebooks/${notebook.id}`);

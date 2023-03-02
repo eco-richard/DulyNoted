@@ -1,0 +1,85 @@
+.fa-shrimp {
+  color: teal;
+}
+
+.splash-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 45px;
+}
+
+.splash-page-top-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+}
+
+.splash-page-logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.splash-login-button-wrapper button {
+  border: none;
+  background-color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.splash-login-button-wrapper button:hover {
+  color: teal;
+}
+
+.splash-page-info-header {
+  font-size: 25px;
+  height: 100px;
+}
+
+.splash-page-info {
+  margin: 0px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.splash-info-text {
+  font-size: 20px;
+}
+
+.splash-page-info-user-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.splash-page-info-signup button {
+  height: 60px;
+  width: 300px;
+  background-color: teal;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.splash-info-login button {
+  border: none;
+  text-decoration: none;
+  background-color: white;
+  padding-top: 10px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.splash-info-login button:hover {
+  text-decoration: underline;
+}

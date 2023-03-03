@@ -14,6 +14,43 @@
 }
 .sidebar-email {
   color: rgb(204, 204, 204);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.sidebar-dropdown-button button {
+  all: unset;
+  font-size: 19px;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.sidebar-dropdown-wrapper-hidden {
+  display: none;
+}
+
+.sidebar-dropdown-wrapper-active {
+  position: absolute;
+  left: 170px;
+  top: 40px;
+  background-color: rgb(26, 26, 26);
+  color: lightgrey;
+  border: 0.5px solid lightgrey;
+  width: 65px;
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+.sidebar-dropdown-wrapper-active button {
+  all: unset;
+  cursor: pointer;
 }
 
 .sidebar-email p {

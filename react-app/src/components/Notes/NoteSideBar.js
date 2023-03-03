@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import OpenModalButton from "../OpenModalButton";
 import CreateNodeSideBar from "./CreateNoteSideBar";
 import SideBarNoteCard from "./SideBarNoteCard";
@@ -8,6 +8,7 @@ import DeleteNotebookModal from "../DeleteNotebookModal";
 import './NoteSideBar.css'
 function NoteSideBar({ fromNotebook, notes, notebook }) {
   const [openNotebookActions, setOpenNotebookActions] = useState(false);
+
   let content;
   if (notes?.length === 0 || notes === undefined) {
     content = <CreateNodeSideBar />
@@ -18,6 +19,17 @@ function NoteSideBar({ fromNotebook, notes, notebook }) {
       ))
     )
   }
+
+  useEffect(() => {
+    if (!openNotebookActions) return;
+
+    const closeMenu = (e) => {
+        setOpenNotebookActions(false);
+    };
+
+    document.addEventListener("click", closeMenu);
+    return () => document.removeEventListener("click", closeMenu);
+  }, [openNotebookActions])
 
   const closeMenu = () => setOpenNotebookActions(false);
 

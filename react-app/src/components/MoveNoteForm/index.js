@@ -36,7 +36,7 @@ function MoveNoteForm({ note }) {
         </div>
         <div className="move-note-close-div">
           <button className="move-note-close" onClick={closeModal}>
-            <i class="fa-solid fa-x"></i>
+            <i className="fa-solid fa-x"></i>
           </button>
         </div>
       </div>

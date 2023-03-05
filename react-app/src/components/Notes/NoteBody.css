@@ -32,3 +32,18 @@
 textarea {
   outline: none;
 }
+
+.notebook-select-bar {
+  display: flex;
+  flex-direction: row;
+  padding: 3px;
+  align-items: center;
+}
+
+.notebook-select-bar button {
+  all: unset;
+  padding: 2px;
+  padding-left: 10px;
+  cursor: pointer ;
+  color: teal;
+}

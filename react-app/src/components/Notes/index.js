@@ -30,7 +30,7 @@ function Notes() {
   let notebook;
   if (notebookId !== undefined) {
     notebook = notebooks[notebookId];
-    notes = notebook.notes;
+    notes = notebook?.notes;
   } else {
     notebook = null;
     notes = Object.values(notes.allNotes);
@@ -41,7 +41,7 @@ function Notes() {
       notes = null;
     }
   }, [])
-  if (Object.values(singleNote).length === 0 && notes.length > 0) {
+  if (Object.values(singleNote)?.length === 0 && notes?.length > 0) {
     singleNote = notes[notes.length - 1];
   }
 
@@ -60,7 +60,7 @@ function Notes() {
     <div className='max-container'>
     <SideBar />
     <div className='notes-container'>
-    <NoteSideBar fromNotebook={fromNotebook} notes={notes.reverse()} notebook={notebook}/>
+    <NoteSideBar fromNotebook={fromNotebook} notes={notes?.reverse()} notebook={notebook}/>
     <NoteBody note={singleNote}/>
     </div>
     </div>

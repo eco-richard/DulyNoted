@@ -9,7 +9,7 @@ import { getAllNotes } from "../../store/notes";
 function HomePage() {
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user);
-  const notes = Object.values(useSelector(state => state.note.allNotes)).slice(0, 4);
+  const notes = Object.values(useSelector(state => state.note.allNotes))?.slice(0, 4);
   const [notesLoaded, setNotesLoaded] = useState(false);
   const BACKGROUND_IMAGE_URL = "https://www.timeoutabudhabi.com/public/images/2020/06/24/Cafe-302.jpg";
 

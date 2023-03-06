@@ -13,7 +13,7 @@ function NoteCard({ note }) {
     history.push(`/notes/${note.id}`)
   }
 
-  const preview = note.body.slice(0, 47) + "...";
+  const preview = note.body?.slice(0, 47) + "...";
   return (
     <div className="home-note-card-wrapper"
     onClick={goToNote}>

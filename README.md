@@ -30,7 +30,7 @@ flask db upgrade
 flask seed all
 ```
 
-Then start the backend server using the `flask run` command (the server runs on localhost:5000, so if that port is in use, the command `flask run -p PORT_NUMBER`)
+Then start the backend server using the `flask run` command (the server runs on localhost:5000, so if that port is in use, the command `flask run -p PORT_NUMBER` to run on a different port)
 
 Then change directory to `react-app` and run `npm install` to install the node packages and then `npm start` to start the development server. 
 

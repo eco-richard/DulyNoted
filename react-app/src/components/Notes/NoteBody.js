@@ -50,7 +50,7 @@ function NoteBody({ note }) {
           <OpenModalButton
           modalComponent={<MoveNoteForm note={note}/>}
           className="change-notebook-button"
-          buttonText={<i class="fa-solid fa-book-medical"></i>}
+          buttonText={<i className="fa-solid fa-book-medical"></i>}
           />
         </div>
       </div>

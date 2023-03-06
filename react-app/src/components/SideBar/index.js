@@ -17,7 +17,7 @@ function SideBar() {
     const date = new Date().toISOString().slice(0, 10);
     const note = await dispatch(createNote({
       title: "Untitled",
-      body: " ",
+      // body: ,
       created_at: date,
       updated_at: date
     }))
@@ -50,7 +50,7 @@ function SideBar() {
 
   const logoutEvent = async () => {
     console.log("IN LOGOUT EVENT")
-    localStorage.removeItem("scratchpad")
+    localStorage.removeItem("scratch")
     await dispatch(logout());
     console.log("NOW REDIRECTING: ")
     history.push(`/`);

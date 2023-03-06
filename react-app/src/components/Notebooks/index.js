@@ -39,6 +39,7 @@ function Notebooks() {
                     <div className='notebooks-header-new'>
                         <OpenModalButton
                         className="add-notebook-button"
+                        // buttonText={<i className="fa-solid fa-book-medical"/>}
                         buttonText="New Notebook"
                         modalComponent={<NewNotebookForm />}
                         />

@@ -61,7 +61,7 @@
 }
 .sidebar-new-note-button {
   display: flex;
-  background-color: rgb(75, 164, 65);
+  background-color: teal;
   color: white;
   width: 90%;
   height: 30px;
@@ -70,6 +70,7 @@
   align-items: center;
   border: none;
   padding-left: 10px;
+  cursor: pointer;
 }
 
 .sidebar-new-note-button i {

@@ -96,3 +96,19 @@
 .notebook-actions-dropdown-wrapper button:hover {
   background-color: lightgray;
 }
+
+.sbnc-delete-div-hidden {
+  display: none;
+}
+
+.sbnc-delete-div-active button {
+  all: unset;
+  font-size: 14px;
+  color: red;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.sbnc-delete-div-active button:hover {
+  color: darkred;
+}

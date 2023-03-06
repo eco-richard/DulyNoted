@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import OpenModalButton from "../OpenModalButton";
 import CreateNodeSideBar from "./CreateNoteSideBar";
 import SideBarNoteCard from "./SideBarNoteCard";

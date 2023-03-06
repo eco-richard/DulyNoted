@@ -10,6 +10,7 @@ import './SplashPage.css'
 function SplashPage() {
   const user = useSelector(state => state.session.user);
   const history = useHistory();
+  const splashImage = "https://evernote.com/c/assets/homepage-repackaging/task_hero_image@2x__en.png?2e28f0ff68efad3c"
 
   if (user !== null) {
     history.push(`/home`);
@@ -53,6 +54,13 @@ function SplashPage() {
             buttonText="Already have an account? Log in"
             />
           </div>
+        </div>
+      </div>
+      <div className="splash-page-image">
+        <div className="splash-page-image-container">
+          <img className="splash-image"
+          src={splashImage}
+          alt="" />
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useLocation, useParams } from 'react-router-dom';
+import { Redirect, useHistory, useLocation, useParams } from 'react-router-dom';
 import { getAllNotes } from '../../store/notes';
 
 import SideBar from '../SideBar';
@@ -27,21 +27,25 @@ function Notes() {
     setLoadedNotes(true);
   }, [dispatch])
 
+  console.log("USER: ", user);
+  // if (user)
   let notebook;
   if (notebookId !== undefined) {
     notebook = notebooks[notebookId];
-    notes = notebook.notes;
+    notes = notebook?.notes;
   } else {
     notebook = null;
     notes = Object.values(notes.allNotes);
   }
 
-  useEffect(() => {
-    if (user.notes.length === 0) {
-      notes = null;
-    }
-  }, [])
-  if (Object.values(singleNote).length === 0 && notes.length > 0) {
+  // useEffect(() => {
+  //   if (user.notes.length === 0) {
+  //     notes = null;
+  //   }
+  // }, [])
+
+
+  if (Object.values(singleNote)?.length === 0 && notes?.length > 0) {
     singleNote = notes[notes.length - 1];
   }
 
@@ -53,6 +57,9 @@ function Notes() {
     }
   }, [location.pathname])
 
+  if (user === null) {
+    return <Redirect to="/" />;
+  }
   if (!loadedNotes) return null;
   // if (Object.values(notebooks).length === 0) return null;
 
@@ -60,7 +67,7 @@ function Notes() {
     <div className='max-container'>
     <SideBar />
     <div className='notes-container'>
-    <NoteSideBar fromNotebook={fromNotebook} notes={notes.reverse()} notebook={notebook}/>
+    <NoteSideBar fromNotebook={fromNotebook} notes={notes?.reverse()} notebook={notebook}/>
     <NoteBody note={singleNote}/>
     </div>
     </div>

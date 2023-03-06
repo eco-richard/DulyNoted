@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { useModal } from '../../context/Modal'
 import { addNotebook, SUCCESS } from '../../store/notebooks';
@@ -9,6 +9,7 @@ import './NewNotebookForm.css';
 function NewNotebookForm() {
     const dispatch = useDispatch();
     const history = useHistory();
+    const user = useSelector(state => state.session.user);
     const [title, setTitle] = useState("");
     const [createDisabled, setCreateDisabled] = useState(true);
     const { closeModal } = useModal();
@@ -23,7 +24,6 @@ function NewNotebookForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         const notebookData = {
             title,
             created_at: new Date().toISOString(),
@@ -43,7 +43,7 @@ function NewNotebookForm() {
                 </div>
                 <div className='new-notebook-close-out-button'
                 onClick={closeModal}>
-                    <button><i class="fa-solid fa-x"></i></button>
+                    <button><i className="fa-solid fa-x"></i></button>
                 </div>
             </div>
             <div className="new-notebook-info">

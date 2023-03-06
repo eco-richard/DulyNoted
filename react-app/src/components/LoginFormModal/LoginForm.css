@@ -12,7 +12,7 @@
   justify-content: center;
   align-items: center;
   margin-top: 35px;
-  margin-bottom: 35px;
+  margin-bottom: 15px;
 }
 
 .login-title {
@@ -26,11 +26,12 @@
 }
 
 .login-form-div {
-  height: 180px;
+  height: 260px;
   width: 308px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
   padding-bottom: 20px;
 }
 
@@ -39,7 +40,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 60px;
+  /* height: 60px; */
+  height: 100%;
   width: 100%;
 }
 
@@ -106,4 +108,14 @@
 
 .no-account-create button:hover {
   text-decoration: underline;
+}
+
+.login-form-div li {
+  color: red;
+  padding: 2px;
+  margin-left: 5px;
+}
+
+.login-form-div ul {
+  padding-top: 20px;
 }

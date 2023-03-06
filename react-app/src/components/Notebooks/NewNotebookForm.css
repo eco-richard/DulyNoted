@@ -61,6 +61,7 @@
   width: 70px;
   margin: 5px;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .new-notebook-cancel {

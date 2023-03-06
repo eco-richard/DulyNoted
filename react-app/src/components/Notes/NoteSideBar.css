@@ -84,10 +84,31 @@
   border: 1px black solid;
   top: 52px;
   left: 476px;
+  border-radius: 3px;
 }
 
 .notebook-actions-dropdown-wrapper button {
   font-size: 15px;
   border: none;
+  cursor: pointer;
+}
 
+.notebook-actions-dropdown-wrapper button:hover {
+  background-color: lightgray;
+}
+
+.sbnc-delete-div-hidden {
+  display: none;
+}
+
+.sbnc-delete-div-active button {
+  all: unset;
+  font-size: 14px;
+  color: red;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.sbnc-delete-div-active button:hover {
+  color: darkred;
 }

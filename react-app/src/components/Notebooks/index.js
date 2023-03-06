@@ -48,11 +48,13 @@ function Notebooks() {
             </div>
              <div className='notebooks-body'>
                 <div className='notebooks-body-bar-header'>
-                    <div className='notebooks-bar-title'>
-                        TITLE
-                    </div>
-                    <div className='notebooks-bar-created-by'>
-                        CREATED BY
+                    <div className='notebooks-bar-t-cb'>
+                        <div className='notebooks-bar-title'>
+                            TITLE
+                        </div>
+                        <div className='notebooks-bar-created-by'>
+                            CREATED BY
+                        </div>
                     </div>
                     <div className='notebooks-bar-updated'>
                         UPDATED
@@ -63,11 +65,13 @@ function Notebooks() {
                      <div onClick={() => openNotebooks(notebook)} className="notebook-bar-wrapper">
                         <div className="notebook-arrow">
                         </div>
+                        <div className='notebook-bar-tu'>
                         <div className="notebook-bar-title">
-                            {notebook.title}
+                            {`${notebook.title} (${notebook.notes.length})`}
                         </div>
                         <div className="notebook-bar-user">
                             {notebook.user.email}
+                        </div>
                         </div>
                         <div className="notebook-bar-updated">
                             {notebook.updated_at}

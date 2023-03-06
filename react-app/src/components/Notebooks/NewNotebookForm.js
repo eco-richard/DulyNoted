@@ -25,8 +25,8 @@ function NewNotebookForm() {
         e.preventDefault();
         const notebookData = {
             title,
-            created_at: new Date().toISOString(),
-            updated_at: new Date().toISOString()
+            created_at: new Date().toISOString().slice(0, 10),
+            updated_at: new Date().toISOString().slice(0, 10)
         }
         const [notebook, response] = await dispatch(addNotebook(notebookData))
         if (response === SUCCESS) {

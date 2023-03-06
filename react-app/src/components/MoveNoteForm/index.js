@@ -24,6 +24,7 @@ function MoveNoteForm({ note }) {
     dispatch(updateNotebook(selectedNotebook))
     dispatch(editNote(note.id, note))
     history.push(`/notebooks/${selectedNotebook.id}`)
+    dispatch(getNotebooks());
     closeModal();
   }
 

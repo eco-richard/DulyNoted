@@ -40,3 +40,14 @@
   justify-content: center;
   align-items: center;
 }
+
+.signup-form-div li {
+  list-style-type: none;
+  color: red;
+  padding: 2px;
+  margin-left: 5px;
+}
+
+.signup-form-div ul {
+  padding-top: 20px;
+}

@@ -12,16 +12,17 @@ function SingleNotebook() {
   const notes = useSelector(state => state.note.allNotes);
   const params = useParams();
 
+  const notebook = notebooks[params.notebookId];
 
   useEffect(() => {
     dispatch(getNotebooks())
     dispatch(getAllNotes());
   }, [dispatch])
+
   if (Object.values(notebooks).length === 0 ||
       Object.values(notes).length === 0)
       return null;
 
-  const notebook = notebooks[params.notebookId];
 
   return (
     <div className="max-container">

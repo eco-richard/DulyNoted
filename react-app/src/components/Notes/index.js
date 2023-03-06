@@ -27,7 +27,6 @@ function Notes() {
     setLoadedNotes(true);
   }, [dispatch])
 
-  console.log("USER: ", user);
   // if (user)
   let notebook;
   if (notebookId !== undefined) {

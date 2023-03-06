@@ -21,19 +21,12 @@ function SideBarNoteCard({ note, fromNotebook, notebook }) {
     dispatch(deleteNote(note.id))
     history.push(`/home`)
   }
-  const triggerDeleteDiv = () => {
-    if (deleteClass === "sbnc-delete-div-hidden") {
-      setDeleteClass("sbnc-delete-div-active");
-    } else {
-      setDeleteClass("sbnc-delete-div-hidden")
-    }
-  }
 
   return (
     <div onClick={newNoteClick}
     className="sidebarnotecard-wrapper"
-    onMouseEnter={triggerDeleteDiv}
-    onMouseLeave={triggerDeleteDiv}>
+    onMouseEnter={() => setDeleteClass("sbnc-delete-div-active")}
+    onMouseLeave={() => setDeleteClass("sbnc-delete-div-hidden")}>
       <div className="sbnc-header">
       <div className="sbnc-title">
         {note.title}

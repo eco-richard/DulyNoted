@@ -12,10 +12,15 @@ function NoteBody({ note }) {
   const dispatch = useDispatch();
   const params = useParams();
   const [title, setTitle] = useState(note.title || "");
-  const [body, setBody] = useState(note.body || "");
+  let noteBody;
+  if (note.body === null) {
+    noteBody = "";
+  } else {
+    noteBody = note.body;
+  }
+  console.log("NOTEBODY: ", noteBody);
+  const [body, setBody] = useState(noteBody);
 
-  console.log("NOTE: ", note);
-  console.log("NOTEBOOK FROM NOTEBODY: ", note.notebook);
   useEffect(() => {
     if (note.id !== params.noteId) {
       dispatch(getSingleNote(params.noteId));
@@ -25,11 +30,10 @@ function NoteBody({ note }) {
 
   useEffect(() => {
     setTitle(note.title);
-    setBody(note.body);
+    setBody(note.body || "");
   }, [note]);
 
   const updateNote = async () => {
-    console.log("NOTE FROM UPDATE NOTE: ", note);
     const date = new Date().toISOString().slice(0, 10);
     await dispatch(editNote(note.id, {
       title,
@@ -37,7 +41,7 @@ function NoteBody({ note }) {
       notebook_id: note?.notebook?.id || null,
       updated_at: date
     }))
-    // dispatch(getSingleNote(note.id))
+    dispatch(getSingleNote(note.id))
   }
 
   return (

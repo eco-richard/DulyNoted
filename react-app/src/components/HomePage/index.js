@@ -13,7 +13,6 @@ function HomePage() {
   const [notesLoaded, setNotesLoaded] = useState(false);
   const BACKGROUND_IMAGE_URL = "https://www.timeoutabudhabi.com/public/images/2020/06/24/Cafe-302.jpg";
 
-  console.log("USER: ", user);
   useEffect(() => {
     dispatch(getAllNotes())
     setNotesLoaded(true);

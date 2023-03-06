@@ -49,10 +49,8 @@ function SideBar() {
   }
 
   const logoutEvent = async () => {
-    console.log("IN LOGOUT EVENT")
     localStorage.removeItem("scratch")
     await dispatch(logout());
-    console.log("NOW REDIRECTING: ")
     history.push(`/`);
   }
 

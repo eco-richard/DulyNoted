@@ -34,3 +34,19 @@ Then start the backend server using the `flask run` command (the server runs on 
 
 Then change directory to `react-app` and run `npm install` to install the node packages and then `npm start` to start the development server. 
 
+## Splash Page
+<img width="1426" alt="Screen Shot 2023-03-06 at 9 40 59 AM" src="https://user-images.githubusercontent.com/41271140/223142713-a5e28498-0f5f-445c-b0bb-fc52f95f09ce.png">
+
+## Login and Signup
+<img width="468" alt="Screen Shot 2023-03-06 at 9 41 11 AM" src="https://user-images.githubusercontent.com/41271140/223142842-0fd660ea-a2b6-4934-9abc-ec880e7c39c7.png">
+<img width="463" alt="Screen Shot 2023-03-06 at 9 41 20 AM" src="https://user-images.githubusercontent.com/41271140/223142869-6aafb757-036b-46dd-94ea-8d8f897675d8.png">
+
+## Home Page
+<img width="1423" alt="Screen Shot 2023-03-06 at 9 41 35 AM" src="https://user-images.githubusercontent.com/41271140/223142920-2798c65b-a59b-498d-8bf0-82a6a208c195.png">
+
+## Notes
+<img width="1422" alt="Screen Shot 2023-03-06 at 9 41 46 AM" src="https://user-images.githubusercontent.com/41271140/223142954-e1b0e4c5-4cfa-417a-a260-91e5a357d81c.png">
+
+## Notebooks
+<img width="1418" alt="Screen Shot 2023-03-06 at 9 41 58 AM" src="https://user-images.githubusercontent.com/41271140/223142987-f28f161c-bf2f-4f2a-8ecd-00a6e039dd56.png">
+

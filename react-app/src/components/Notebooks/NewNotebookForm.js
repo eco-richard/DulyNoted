@@ -9,7 +9,6 @@ import './NewNotebookForm.css';
 function NewNotebookForm() {
     const dispatch = useDispatch();
     const history = useHistory();
-    const user = useSelector(state => state.session.user);
     const [title, setTitle] = useState("");
     const [createDisabled, setCreateDisabled] = useState(true);
     const { closeModal } = useModal();

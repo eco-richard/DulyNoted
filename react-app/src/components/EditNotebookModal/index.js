@@ -11,7 +11,7 @@ function EditNotebookModal({ notebook }) {
 
   const handleSubmit = async () => {
     const notebookData = {...notebook};
-    const date = new Date().toISOString();
+    const date = new Date().toISOString().slice(0, 10);
     notebookData.updated_at = date;
     notebookData.title = title;
     dispatch(updateNotebook(notebookData));

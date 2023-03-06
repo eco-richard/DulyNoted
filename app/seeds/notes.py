@@ -17,7 +17,7 @@ def seed_notes():
   note2 = Note(
     user=demo,
     title="Reminder Day 1",
-    body="1. Pick up kids, 2. Get dog out of the air vents",
+    body="1. Pick up kids, 2. Get dog food",
     created_at='2023-02-22',
     updated_at='2023-02-22'
   )

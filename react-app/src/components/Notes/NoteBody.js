@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getSingleNote, editNote, SUCCESS } from "../../store/notes";
+// import { Editor, EditorState} from 'draft-js';
 import OpenModalButton from '../OpenModalButton';
 import MoveNoteForm from "../MoveNoteForm";
 
@@ -12,13 +13,14 @@ function NoteBody({ note }) {
   const dispatch = useDispatch();
   const params = useParams();
   const [title, setTitle] = useState(note.title || "");
+  // const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
   let noteBody;
   if (note.body === null) {
     noteBody = "";
   } else {
     noteBody = note.body;
   }
-  console.log("NOTEBODY: ", noteBody);
+  // console.log("NOTEBODY: ", noteBody);
   const [body, setBody] = useState(noteBody);
 
   useEffect(() => {
@@ -35,6 +37,7 @@ function NoteBody({ note }) {
 
   const updateNote = async () => {
     const date = new Date().toISOString().slice(0, 10);
+    console.log("UPDATING");
     await dispatch(editNote(note.id, {
       title,
       body,

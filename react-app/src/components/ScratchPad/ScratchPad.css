@@ -1,4 +1,42 @@
 
+.scratch-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.scratch-buttons {
+  display: flex;
+  flex-direction: row;
+  margin-right: 12px;
+}
+
+.scratch-buttons button{
+  all: unset;
+  margin: 7px;
+  cursor: pointer;
+}
+
+.fa-square-plus {
+  color: grey;
+  font-size: 20px;
+}
+
+.fa-trash-can {
+  color: grey;
+  font-size: 20px;
+}
+
+.scratch-buttons button:disabled {
+  color: lightgrey;
+  cursor: not-allowed;
+}
+
+.scratch-body i {
+  color: teal;
+}
+
 .scratch-title {
   margin-left: 17px;
   font-size: 21px;

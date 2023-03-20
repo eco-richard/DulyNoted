@@ -2,8 +2,8 @@
 const GET_NOTES = "notes/GET_NOTES"
 const GET_SINGLE_NOTE = "notes/GET_SINGLE_NOTE"
 const ADD_NOTE = "notes/ADD_NOTE"
-const UPDATE_NOTE = "notes/UPDATE_NOTES"
-const REMOVE_NOTE = "notes/REMOVE_NOTES"
+const UPDATE_NOTE = "notes/UPDATE_NOTE"
+const REMOVE_NOTE = "notes/REMOVE_NOTE"
 
 // Return codes
 export const SUCCESS = 200

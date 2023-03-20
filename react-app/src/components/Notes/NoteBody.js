@@ -1,27 +1,40 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getSingleNote, editNote, SUCCESS } from "../../store/notes";
-// import { Editor, EditorState} from 'draft-js';
+import { getSingleNote, editNote } from "../../store/notes";
+import { EditorState, convertFromRaw, convertToRaw, ContentState } from "draft-js";
 import OpenModalButton from '../OpenModalButton';
 import MoveNoteForm from "../MoveNoteForm";
+import RichEditorExample from "../RichEditor";
 
 import './NoteBody.css'
+import { getNotebooks } from "../../store/notebooks";
 
 function NoteBody({ note }) {
-  const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
   const params = useParams();
   const [title, setTitle] = useState(note.title || "");
-  // const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
+
+
+
   let noteBody;
   if (note.body === null) {
     noteBody = "";
   } else {
     noteBody = note.body;
   }
+  console.log("NOTEBODY: ", noteBody);
   // console.log("NOTEBODY: ", noteBody);
   const [body, setBody] = useState(noteBody);
+  const [editorState, setEditorState] = useState(() => {
+    if (noteBody) {
+      const contentBody = ContentState.createFromText(noteBody)
+      console.log("CONTENT BODY:", contentBody)
+      console.log(EditorState.createWithContent(contentBody))
+      return EditorState.createWithContent(contentBody);
+    }
+    return EditorState.createEmpty()
+  });
 
   useEffect(() => {
     if (note.id !== params.noteId) {
@@ -35,9 +48,13 @@ function NoteBody({ note }) {
     setBody(note.body || "");
   }, [note]);
 
+  let noteStyle;
   const updateNote = async () => {
     const date = new Date().toISOString().slice(0, 10);
-    console.log("UPDATING");
+    // console.log("UPDATING");
+    const newBody = editorState?.getCurrentContent().getPlainText();
+    noteStyle = JSON.stringify(convertToRaw(editorState.getCurrentContent()));
+    console.log("Body: ", newBody);
     await dispatch(editNote(note.id, {
       title,
       body,
@@ -45,6 +62,7 @@ function NoteBody({ note }) {
       updated_at: date
     }))
     dispatch(getSingleNote(note.id))
+    dispatch(getNotebooks());
   }
 
   return (
@@ -64,7 +82,7 @@ function NoteBody({ note }) {
       <div className="note-meat"
       onMouseLeave={updateNote}
       >
-        <textarea
+         <textarea
         className="notebody-title"
         value={title}
         onChange={e => setTitle(e.target.value)}
@@ -78,6 +96,13 @@ function NoteBody({ note }) {
         onBlur={updateNote}
         placeholder="No rush, just jot something down"
         />
+        {/* <div>
+          <RichEditorExample
+          editorState={editorState}
+          onEditorStateChange={setEditorState}
+          noteStyle={note.title}
+          />
+        </div> */}
       </div>
     </div>
   )

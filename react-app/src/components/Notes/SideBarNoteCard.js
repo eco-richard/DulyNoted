@@ -18,8 +18,10 @@ function SideBarNoteCard({ note, fromNotebook, notebook }) {
     }
   }
   const deleteNoteEvent = () => {
-    dispatch(deleteNote(note.id))
-    history.push(`/home`)
+    if (window.confirm("Are you sure you want to delete this note?")) {
+      dispatch(deleteNote(note.id))
+      history.push(`/home`)
+    }
   }
 
   return (

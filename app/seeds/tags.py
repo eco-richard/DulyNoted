@@ -4,27 +4,25 @@ from app.models import db, User, Tag, Note, environment, SCHEMA
 def seed_tags():
     demo = User.query.get(1)
 
-    note1, note2 = demo.notes
-
     tag1 = Tag(
+        user=demo,
         title="shopping",
         color=2463422
     )
 
     tag2 = Tag(
+        user=demo,
         title="reminders",
         color=15382134
     )
 
     tag3 = Tag(
+        user=demo,
         title="urgent",
         color=10631463
     )
 
     db.session.add_all([tag1, tag2, tag3])
-
-    note1.tags.append(tag1)
-    note2.tags.append(tag2, tag3)
     db.session.commit()
 
 

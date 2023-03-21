@@ -91,3 +91,12 @@
 .sidebar-links i {
   padding: 5px;
 }
+
+.sidebar-tags {
+  cursor: pointer;
+  color:rgb(204, 204, 204);
+}
+
+.sidebar-tags:hover {
+  text-decoration: underline;
+}

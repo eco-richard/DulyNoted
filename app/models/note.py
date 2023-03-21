@@ -44,7 +44,7 @@ class Note(db.Model):
     return {
       "id": self.id,
       "user": self.user.simple_user(),
-      "tags": [tag.simple_tag for tag in self.tags],
+      "tags": [tag.simple_tag() for tag in self.tags],
       "notebook": self.notebook.simple_notebook() if self.notebook != None else "",
       "title": self.title,
       "body": self.body,

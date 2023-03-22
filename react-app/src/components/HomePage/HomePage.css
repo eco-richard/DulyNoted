@@ -10,6 +10,7 @@
 }
 .home-background-div {
   height: 100vh;
+  z-index: -2;
 }
 .home-background-div img {
   width: 100%;
@@ -24,6 +25,7 @@
   width: calc(97% - 250px);
   justify-content: space-between;
   margin: 0px 15px;
+  z-index: 0;
 }
 
 .home-notes-and-scratchpad div {

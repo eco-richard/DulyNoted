@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { useParams } from "react-router-dom";
 import { getSingleNote, editNote } from "../../store/notes";
 import { EditorState, convertFromRaw, convertToRaw, ContentState } from "draft-js";
 import OpenModalButton from '../OpenModalButton';
 import MoveNoteForm from "../MoveNoteForm";
-import RichEditorExample from "../RichEditor";
+// import RichEditorExample from "../RichEditor";
 
 import './NoteBody.css'
 import { getNotebooks } from "../../store/notebooks";

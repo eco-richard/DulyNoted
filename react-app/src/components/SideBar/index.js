@@ -94,7 +94,7 @@ function SideBar() {
       </div>
     </div>
     {openTags &&
-      <Tags />
+      <Tags openTags={openTags} setOpenTags={setOpenTags} />
     }
     </nav>
   );

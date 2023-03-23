@@ -9,23 +9,47 @@ import NoteBody from './NoteBody';
 
 import './Notes.css'
 import { getNotebooks } from '../../store/notebooks';
+import { getAllTagsThunk } from '../../store/tags';
 
 function Notes() {
   const dispatch = useDispatch();
   const location = useLocation();
   const user = useSelector(state => state.session.user)
-  const { notebookId } = useParams();
+  const params = useParams();
+  const { notebookId, tagTitle } = useParams();
   let notes = useSelector(state => state.note);
   const notebooks = useSelector(state => state.notebook);
+  const tags = Object.values(useSelector(state => state.tag.allTags));
   let singleNote = useSelector(state => state.note.singleNote);
   const [fromNotebook, setFromNotebook] = useState(location.pathname.includes("notebook"));
+  const [usesTags, setUsesTags] = useState(location.pathname.includes("tags"));
   const [loadedNotes, setLoadedNotes] = useState(false);
-
+  console.log("PARAMS: ", params);
+  console.log("NOTES: ", notes);
   useEffect(() => {
     dispatch(getAllNotes());
     dispatch(getNotebooks());
+    dispatch(getAllTagsThunk());
     setLoadedNotes(true);
   }, [dispatch])
+
+  const convertTagURL = (tagURL) => {
+    const tagURLArray = tagURL.split("%20");
+    for (let str of tagURLArray) {
+      console.log(str)
+    }
+  }
+  const [tagName, setTag] = useState(convertTagURL(tagTitle))
+  useEffect(() => {
+    if (location.pathname.includes("tags")) {
+      setUsesTags(true);
+      if (tagTitle.includes("%20")) {
+        convertTagURL(tagTitle);
+      }
+    } else {
+      setUsesTags(false);
+    }
+  }, [location.pathname, tagTitle])
 
   // if (user)
   let notebook;
@@ -58,6 +82,14 @@ function Notes() {
 
   if (user === null) {
     return <Redirect to="/" />;
+  }
+
+  if (usesTags) {
+    notes = notes.allNotes;
+    notes?.filter((note) =>{
+      const noteTags = note.tags
+      return noteTags.includes
+    })
   }
   if (!loadedNotes) return null;
   // if (Object.values(notebooks).length === 0) return null;

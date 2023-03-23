@@ -4,6 +4,7 @@ import { getAllTagsThunk } from "../../store/tags";
 import OpenModalButton from "../OpenModalButton";
 import CreateTagModal from "./CreateTagModal";
 import { TagStructure } from "./tags-interface"
+import { Link } from 'react-router-dom';
 
 import './Tags.css';
 
@@ -22,6 +23,19 @@ function Tags(prop: TagsProps) {
         dispatch(getAllTagsThunk());
         setLoaded(true);
     }, [dispatch])
+
+    const tagURL = (tag: TagStructure) => {
+        if (!(tag.title.includes(" "))) {
+            return tag.title;
+        }
+        const tagArray = tag.title.split("");
+        for (let char of tagArray) {
+            if (char === " ") {
+                char = "%20";
+            }
+        }
+        return tagArray.join("");
+    }
 
     if (!loaded) return null;
     tags.sort((a, b) => {
@@ -59,8 +73,14 @@ function Tags(prop: TagsProps) {
             </div>
             <div className="tags-body">
                 {tags.map((tag: TagStructure) => (
-                    <div className="single-tag-title">
+                    <div className="single-tag-link-wrapper"
+                    style={{backgroundColor: `#${tag.color.toString(16)}`}}>
+                    <Link
+                        className="single-tag-title"
+                        to={`/notes/tags/${tagURL(tag)}`}
+                    >
                         {tag.title}
+                    </Link>
                     </div>
                 )) }
             </div>

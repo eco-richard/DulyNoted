@@ -22,7 +22,13 @@ def seed_tags():
         color=10631463
     )
 
-    db.session.add_all([tag1, tag2, tag3])
+    tag4 = Tag(
+        user=demo,
+        title="other tags",
+        color=11262947
+    )
+
+    db.session.add_all([tag1, tag2, tag3, tag4])
     db.session.commit()
 
 

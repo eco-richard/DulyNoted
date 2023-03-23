@@ -54,14 +54,35 @@
 }
 
 
+.tags-body {
+    margin: 10px 20px;
+}
+
 .new-tag-pop-up {
     position: absolute;
     /* border: 1px solid black; */
-    left: 205px;
+    left: 195px;
     top: 47px;
     width: 111px;
     border-radius: 5px;
     background-color: rgb(108, 104, 104);
     color: whitesmoke;
     padding: 7px;
+}
+
+.single-tag-link-wrapper a {
+    all: unset;
+    cursor: pointer;
+}
+
+.single-tag-link-wrapper a:visited {
+    all: unset;
+}
+
+.single-tag-link-wrapper {
+    border: 0.5px solid grey;
+    width: fit-content;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 4px;
 }

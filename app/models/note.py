@@ -36,6 +36,7 @@ class Note(db.Model):
       "notebook": self.notebook.simple_notebook() if self.notebook != None else "",
       "title": self.title,
       "body": self.body,
+      "tags": [tag.simple_tag() for tag in self.tags],
       "created_at": self.created_at,
       "updated_at": self.updated_at,
     }

@@ -18,8 +18,6 @@ function NoteBody({ note }) {
   const [title, setTitle] = useState(note.title || "");
   const [isEditable, setIsEditable] = useState(false);
 
-
-
   let noteBody;
   if (note.body === null) {
     noteBody = "";
@@ -88,6 +86,12 @@ function NoteBody({ note }) {
   ) : (
     <ReactMarkdown>{note.body}</ReactMarkdown>
   )
+
+  useEffect(() => {
+    if (isEditable === false) {
+      updateNote();
+    }
+  }, [isEditable]);
 
   return (
     <div className="notebody-wrapper">

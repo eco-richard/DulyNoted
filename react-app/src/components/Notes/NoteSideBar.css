@@ -112,3 +112,20 @@
 .sbnc-delete-div-active button:hover {
   color: darkred;
 }
+
+.sbnc-tags {
+  display: flex;
+  flex-direction: row;
+}
+
+.single-tag-div {
+  border: 0.5px solid grey;
+  border-radius: 10px;
+  padding: 2px 4px;
+  margin: 2px;
+  /* cursor: pointer; */
+}
+
+.single-tag-div:hover {
+  /* text-decoration: underline; */
+}

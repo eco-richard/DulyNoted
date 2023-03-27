@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory, useLocation, useParams } from 'react-router-dom';
-import { getAllNotes } from '../../store/notes';
+import { getAllNotes, getSingleNote } from '../../store/notes';
 
 import SideBar from '../SideBar';
 import NoteSideBar from './NoteSideBar';
@@ -27,30 +27,46 @@ function Notes() {
   const [loadedNotes, setLoadedNotes] = useState(false);
   console.log("PARAMS: ", params);
   console.log("NOTES: ", notes);
+  console.log("TAGS OUTSIDE:: ", tags);
+  console.log("SINGLE TAG: ", singleTag);
+  const [tagName, setTagName] = useState(convertTagURL(tagTitle) || "");
 
-  const [tagName, setTag] = useState(convertTagURL(tagTitle) || "");
   useEffect(() => {
     if (location.pathname.includes("tags")) {
       setUsesTags(true);
       if (tagTitle.includes("%20")) {
-        convertTagURL(tagTitle);
+        setTagName(convertTagURL(tagTitle));
       }
     } else {
       setUsesTags(false);
     }
   }, [location.pathname, tagTitle])
 
+  console.log("TAGNAME: ", tagName);
   useEffect(() => {
     dispatch(getAllNotes());
     dispatch(getNotebooks());
     dispatch(getAllTagsThunk());
-
-    if (usesTags) {
-      const tag = tags.find(tag => tag.title === tagName);
-      console.log("tag: ", tag);
-      dispatch(getSingleTagThunk(tag.id));
-    }
     setLoadedNotes(true);
+  }, [dispatch])
+
+  useEffect(() => {
+    if (usesTags) {
+      if (tags.length) {
+        for (let tag of tags) {
+          if (tag.title === params.tagTitle) {
+            dispatch(getSingleTagThunk(tag.id));
+          }
+        }
+      }
+    }
+
+    if (Object.values(singleNote).length === 0) {
+      if (notes.length) {
+        console.log("notes: ", notes);
+        dispatch(getSingleNote(notes[notes.length - 1].id));
+      }
+    }
   }, [dispatch])
 
   function convertTagURL(tagURL) {
@@ -58,7 +74,7 @@ function Notes() {
       return "";
     } else {
       const tagURLArray = tagURL?.split("%20");
-      return tagURLArray.join(" ");
+      return tagURLArray?.join(" ");
     }
   }
 
@@ -95,15 +111,11 @@ function Notes() {
   if (user === null) {
     return <Redirect to="/" />;
   }
+  if (!loadedNotes) return null;
 
   if (usesTags) {
-    notes = notes.allNotes;
-    notes?.filter((note) =>{
-      const noteTags = note.tags
-      return noteTags.find()
-    })
+    notes = singleTag.notes;
   }
-  if (!loadedNotes) return null;
   // if (Object.values(notebooks).length === 0) return null;
 
   return (

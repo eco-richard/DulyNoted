@@ -14,18 +14,27 @@ function SideBar() {
   const singleNote = useSelector(state => state.note.singleNote);
   const [dropdownClass, setDropDownClass] = useState("hidden");
   const [openTags, setOpenTags] = useState(false);
-
+  const [loadedNotes, setLoadedNotes] = useState(false);
+  console.log("USER: ", user);
   const createNewNote = async () => {
     const date = new Date().toISOString().slice(0, 10);
     const note = await dispatch(createNote({
       title: "Untitled",
-      // body: ,
+      body: `Double click here to edit your note!\n\nYou can use markdown in your note!`,
       created_at: date,
       updated_at: date
     }))
     dispatch(getSingleNote(note));
     history.push(`/notes/${note.id}`);
   }
+
+  useEffect(() => {
+    if (Object.values(singleNote) === 0) {
+      const notes = user.notes;
+      const note = notes[notes.length - 1];
+      dispatch(getSingleNote(note.id));
+    }
+  }, [dispatch]);
 
   useEffect(() => {
     if (dropdownClass === "hidden") return;
@@ -38,9 +47,21 @@ function SideBar() {
     return () => document.removeEventListener("click", closeMenu);
   }, [dropdownClass])
 
+  useEffect(() => {
+    if (!openTags) return;
+
+    const closeMenu = (e) => {
+      setOpenTags(false);
+    };
+
+    document.addEventListener("click",closeMenu);
+    return () => document.removeEventListener("click", closeMenu);
+  }, [openTags]);
   if (user === null) {
     return <Redirect to="/" />;
   }
+
+
 
   const triggerDropdown = () => {
     if (dropdownClass === "hidden") {

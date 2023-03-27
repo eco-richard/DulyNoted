@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux"
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getSingleNote, deleteNote } from "../../store/notes";
 
 function SideBarNoteCard({ note, fromNotebook, notebook }) {
@@ -8,6 +9,10 @@ function SideBarNoteCard({ note, fromNotebook, notebook }) {
   const history = useHistory();
   const [deleteClass, setDeleteClass] = useState("sbnc-delete-div-hidden")
 
+  console.log("Note: ", note);
+  const tags = note.tags.length > 3 ? note.tags.slice(2) : note.tags;
+
+  console.log("TAGS: ", tags);
   function newNoteClick(e) {
     e.preventDefault();
     dispatch(getSingleNote(note.id))
@@ -23,6 +28,37 @@ function SideBarNoteCard({ note, fromNotebook, notebook }) {
       history.push(`/home`)
     }
   }
+  function tagURL(tag) {
+    let tagURL;
+    if (tag.title.includes(" ")) {
+      const tagArray = tag.title.split(" ");
+      for (let char of tagArray) {
+        if (char === " ") {
+          char = "%20";
+        }
+      }
+      tagURL = tagArray.join("");
+    } else {
+      tagURL = tag.title;
+    }
+    return tagURL;
+  }
+  const handleTagClick = (tag) => {
+    let tagURL;
+    if (tag.title.includes(" ")) {
+      const tagArray = tag.title.split(" ");
+      for (let char of tagArray) {
+        if (char === " ") {
+          char = "%20";
+        }
+      }
+      tagURL = tagArray.join("");
+    } else {
+      tagURL = tag.title;
+    }
+    console.log("IN HANDLE TAG CLICK");
+    history.push(`/notes/tags/${tagURL}`)
+  }
 
   return (
     <div onClick={newNoteClick}
@@ -37,9 +73,16 @@ function SideBarNoteCard({ note, fromNotebook, notebook }) {
         <button className="sbnc-delete-button" onClick={deleteNoteEvent}><i class="fa-solid fa-x"></i></button>
       </div>
       </div>
-      <div className="sbnc-created-at">
-        {note.created_at}
+      <div className="sbnc-tags">
+        {tags.map(tag => (
+          <div className="single-tag-div"
+          onClick={() => handleTagClick(tag)}
+          style={{backgroundColor: `#${tag.color.toString(16)}`}}>
+            {tag.title}
+          </div>
+        ))}
       </div>
+
     </div>
   )
 }

@@ -9,7 +9,7 @@ import NoteBody from './NoteBody';
 
 import './Notes.css'
 import { getNotebooks } from '../../store/notebooks';
-import { getAllTagsThunk } from '../../store/tags';
+import { getAllTagsThunk, getSingleTagThunk } from '../../store/tags';
 
 function Notes() {
   const dispatch = useDispatch();
@@ -20,26 +20,15 @@ function Notes() {
   let notes = useSelector(state => state.note);
   const notebooks = useSelector(state => state.notebook);
   const tags = Object.values(useSelector(state => state.tag.allTags));
+  const singleTag = useSelector(state => state.tag.singleTag);
   let singleNote = useSelector(state => state.note.singleNote);
   const [fromNotebook, setFromNotebook] = useState(location.pathname.includes("notebook"));
   const [usesTags, setUsesTags] = useState(location.pathname.includes("tags"));
   const [loadedNotes, setLoadedNotes] = useState(false);
   console.log("PARAMS: ", params);
   console.log("NOTES: ", notes);
-  useEffect(() => {
-    dispatch(getAllNotes());
-    dispatch(getNotebooks());
-    dispatch(getAllTagsThunk());
-    setLoadedNotes(true);
-  }, [dispatch])
 
-  const convertTagURL = (tagURL) => {
-    const tagURLArray = tagURL.split("%20");
-    for (let str of tagURLArray) {
-      console.log(str)
-    }
-  }
-  const [tagName, setTag] = useState(convertTagURL(tagTitle))
+  const [tagName, setTag] = useState(convertTagURL(tagTitle) || "");
   useEffect(() => {
     if (location.pathname.includes("tags")) {
       setUsesTags(true);
@@ -50,6 +39,29 @@ function Notes() {
       setUsesTags(false);
     }
   }, [location.pathname, tagTitle])
+
+  useEffect(() => {
+    dispatch(getAllNotes());
+    dispatch(getNotebooks());
+    dispatch(getAllTagsThunk());
+
+    if (usesTags) {
+      const tag = tags.find(tag => tag.title === tagName);
+      console.log("tag: ", tag);
+      dispatch(getSingleTagThunk(tag.id));
+    }
+    setLoadedNotes(true);
+  }, [dispatch])
+
+  function convertTagURL(tagURL) {
+    if (!usesTags) {
+      return "";
+    } else {
+      const tagURLArray = tagURL?.split("%20");
+      return tagURLArray.join(" ");
+    }
+  }
+
 
   // if (user)
   let notebook;
@@ -88,7 +100,7 @@ function Notes() {
     notes = notes.allNotes;
     notes?.filter((note) =>{
       const noteTags = note.tags
-      return noteTags.includes
+      return noteTags.find()
     })
   }
   if (!loadedNotes) return null;

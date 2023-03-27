@@ -6,6 +6,8 @@ import { EditorState, convertFromRaw, convertToRaw, ContentState } from "draft-j
 import OpenModalButton from '../OpenModalButton';
 import MoveNoteForm from "../MoveNoteForm";
 // import RichEditorExample from "../RichEditor";
+// import Editor from "../Editor";
+import ReactMarkdown from "react-markdown";
 
 import './NoteBody.css'
 import { getNotebooks } from "../../store/notebooks";
@@ -14,6 +16,7 @@ function NoteBody({ note }) {
   const dispatch = useDispatch();
   const params = useParams();
   const [title, setTitle] = useState(note.title || "");
+  const [isEditable, setIsEditable] = useState(false);
 
 
 
@@ -53,7 +56,7 @@ function NoteBody({ note }) {
     const date = new Date().toISOString().slice(0, 10);
     // console.log("UPDATING");
     const newBody = editorState?.getCurrentContent().getPlainText();
-    noteStyle = JSON.stringify(convertToRaw(editorState.getCurrentContent()));
+    // noteStyle = JSON.stringify(convertToRaw(editorState.getCurrentContent()));
     console.log("Body: ", newBody);
     await dispatch(editNote(note.id, {
       title,
@@ -64,6 +67,27 @@ function NoteBody({ note }) {
     dispatch(getSingleNote(note.id))
     dispatch(getNotebooks());
   }
+
+  const handleClick = (e) => {
+    console.log("EVENT: ", e);
+    console.log("EVENT DETAIL: ", e.detail);
+    if (e.detail === 2) {
+      setIsEditable(!isEditable);
+    }
+  }
+
+  const editComponent = isEditable ? (
+    <textarea
+      className="notebody-body"
+      value={body}
+      onClick={(e) => handleClick(e)}
+      onChange={e => setBody(e.target.value)}
+      onBlur={updateNote}
+      placeholder="No rush, just jot something down"
+    />
+  ) : (
+    <ReactMarkdown>{note.body}</ReactMarkdown>
+  )
 
   return (
     <div className="notebody-wrapper">
@@ -82,20 +106,30 @@ function NoteBody({ note }) {
       <div className="note-meat"
       onMouseLeave={updateNote}
       >
-         <textarea
+        <textarea
         className="notebody-title"
         value={title}
         onChange={e => setTitle(e.target.value)}
         onBlur={updateNote}
         placeholder="Title"
         />
-        <textarea
+        <div className="notebody-body-div"
+        onClick={(e) => handleClick(e)}>
+        {/* <textarea
         className="notebody-body"
         value={body}
+        onClick={(e) => handleClick(e)}
         onChange={e => setBody(e.target.value)}
         onBlur={updateNote}
         placeholder="No rush, just jot something down"
-        />
+        /> */}
+        {editComponent}
+        </div>
+        {/* <Editor /> */}
+        {/* <div className="markdown-preview"
+        onClick={(e) => handleClick(e)}>
+        <ReactMarkdown>{note.body}</ReactMarkdown>
+        </div> */}
         {/* <div>
           <RichEditorExample
           editorState={editorState}

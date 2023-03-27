@@ -77,7 +77,7 @@ function SideBarNoteCard({ note, fromNotebook, notebook }) {
         {tags.map(tag => (
           <div className="single-tag-div"
           onClick={() => handleTagClick(tag)}
-          style={{backgroundColor: `#${tag.color.toString(16)}`}}>
+          style={{backgroundColor: `${tag.color}`}}>
             {tag.title}
           </div>
         ))}

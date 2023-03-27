@@ -5,4 +5,4 @@ from app.models import Tag
 
 class TagForm(FlaskForm):
     title = wtf.StringField("title")
-    color = wtf.IntegerField("color")
+    color = wtf.StringField("color")

@@ -74,7 +74,7 @@ function Tags(prop: TagsProps) {
             <div className="tags-body">
                 {tags.map((tag: TagStructure) => (
                     <div className="single-tag-link-wrapper"
-                    style={{backgroundColor: `#${tag.color.toString(16)}`}}>
+                    style={{backgroundColor: `${tag.color}`}}>
                     <Link
                         className="single-tag-title"
                         to={`/notes/tags/${tagURL(tag)}`}

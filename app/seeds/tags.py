@@ -7,25 +7,25 @@ def seed_tags():
     tag1 = Tag(
         user=demo,
         title="shopping",
-        color=2463422
+        color="#2596BE"
     )
 
     tag2 = Tag(
         user=demo,
         title="reminders",
-        color=15382134
+        color="#EAB676"
     )
 
     tag3 = Tag(
         user=demo,
         title="urgent",
-        color=10631463
+        color="#A23927"
     )
 
     tag4 = Tag(
         user=demo,
         title="other tags",
-        color=11262947
+        color="#ABDBE3"
     )
 
     db.session.add_all([tag1, tag2, tag3, tag4])

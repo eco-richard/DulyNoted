@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllTagsThunk } from "../../store/tags";
+import { getAllTagsThunk, deleteTagThunk } from "../../store/tags";
 import OpenModalButton from "../OpenModalButton";
 import CreateTagModal from "./CreateTagModal";
 import { TagStructure } from "./tags-interface"
@@ -35,6 +35,18 @@ function Tags(prop: TagsProps) {
             }
         }
         return tagArray.join("");
+    }
+
+    const handleTagClick = (tag: TagStructure) => {
+        console.log("TAG : ", tag);
+        const message = `
+        Are you sure you want to delete this tag?
+        Any notes connected to this tag won't be deleted.
+        `
+        if (window.confirm(message)) {
+            dispatch(deleteTagThunk(tag.id));
+            dispatch(getAllTagsThunk());
+        }
     }
 
     if (!loaded) return null;
@@ -74,13 +86,10 @@ function Tags(prop: TagsProps) {
             <div className="tags-body">
                 {tags.map((tag: TagStructure) => (
                     <div className="single-tag-link-wrapper"
-                    style={{backgroundColor: `${tag.color}`}}>
-                    <Link
-                        className="single-tag-title"
-                        to={`/notes/tags/${tagURL(tag)}`}
-                    >
+                    style={{backgroundColor: `${tag.color}`}}
+                    onClick={() => handleTagClick(tag)}>
+
                         {tag.title}
-                    </Link>
                     </div>
                 )) }
             </div>

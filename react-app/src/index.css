@@ -16,6 +16,10 @@ a:hover {
 body {
   margin: 0px;
 }
+
+* {
+  word-break: break-word;
+}
 /*
 #root {
   display: grid;

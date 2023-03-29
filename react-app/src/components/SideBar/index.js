@@ -4,7 +4,7 @@ import { NavLink, Redirect, useHistory } from "react-router-dom";
 import { createNote, getSingleNote } from "../../store/notes";
 import { logout } from "../../store/session";
 import Tags from "../Tags";
-
+import AboutLinks from "../AboutLinks";
 import './SideBar.css';
 
 function SideBar() {
@@ -20,7 +20,7 @@ function SideBar() {
     const date = new Date().toISOString().slice(0, 10);
     const note = await dispatch(createNote({
       title: "Untitled",
-      body: `Double click here to edit your note!\n\nYou can use markdown in your note!`,
+      body: `Double click here to edit your note!\n\nYou can add markdown in your note!\n\n ### Like this header`,
       created_at: date,
       updated_at: date
     }))
@@ -84,6 +84,7 @@ function SideBar() {
   return (
     <nav className="sidebar">
     <div className="sidebar-wrapper">
+      <div className="sidebar-site-menu">
       <div className="sidebar-email">
         <div className="sidebar-email-logo">
         <p><i className="fa-solid fa-user-pen"></i> {user.email}</p>
@@ -103,20 +104,32 @@ function SideBar() {
         <div className="sidebar-home">
           <NavLink exact to="/home"> <i className="fa-solid fa-house-chimney"></i>Home</NavLink>
         </div>
+        <div className="space-1">
+
+        </div>
         <div className="sidebar-notes">
           <NavLink exact to={`/notes/${singleNote.id}`}> <i className="fa-solid fa-note-sticky"></i>Notes</NavLink>
-        </div>
-        <div className="sidebar-notebooks">
-          <NavLink exact to='/notebooks'> <i className="fa-solid fa-book"></i>Notebooks</NavLink>
         </div>
         <div onClick={toggleTasks}className="sidebar-tags">
         <i className="fa-solid fa-tag"></i>Tags
         </div>
+        <div className="space-2">
+
+        </div>
+        <div className="sidebar-notebooks">
+          <NavLink exact to='/notebooks'> <i className="fa-solid fa-book"></i>Notebooks</NavLink>
+        </div>
       </div>
+      </div>
+    <div className="about-links-container">
+      <AboutLinks />
+    </div>
     </div>
     {openTags &&
       <Tags openTags={openTags} setOpenTags={setOpenTags} />
     }
+
+
     </nav>
   );
 }

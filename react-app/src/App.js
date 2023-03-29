@@ -34,9 +34,6 @@ function App() {
           <Route exact path="/home">
             <HomePage />
           </Route>
-          <Route exact path="/notes/tags/:tagTitle">
-            <Notes />
-          </Route>
           <Route path="/notes/:noteId">
             <Notes />
           </Route>

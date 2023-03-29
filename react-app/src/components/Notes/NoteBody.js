@@ -15,14 +15,15 @@ import { getNotebooks } from "../../store/notebooks";
 function NoteBody({ note }) {
   const dispatch = useDispatch();
   const params = useParams();
-  const [title, setTitle] = useState(note.title || "");
+  const [title, setTitle] = useState(note?.title || "");
   const [isEditable, setIsEditable] = useState(false);
 
+  console.log("NOTE : ", note);
   let noteBody;
-  if (note.body === null) {
+  if (note?.body === null) {
     noteBody = "";
   } else {
-    noteBody = note.body;
+    noteBody = note?.body;
   }
   console.log("NOTEBODY: ", noteBody);
   // console.log("NOTEBODY: ", noteBody);
@@ -40,9 +41,10 @@ function NoteBody({ note }) {
   useEffect(() => {
     if (note.id !== params.noteId) {
       dispatch(getSingleNote(params.noteId));
+      setIsEditable(false);
     }
     // dispatch(getSingleNote(note.id));
-  }, [dispatch, note.id])
+  }, [dispatch, note?.id])
 
   useEffect(() => {
     setTitle(note.title);
@@ -119,28 +121,17 @@ function NoteBody({ note }) {
         />
         <div className="notebody-body-div"
         onClick={(e) => handleClick(e)}>
-        {/* <textarea
-        className="notebody-body"
-        value={body}
-        onClick={(e) => handleClick(e)}
-        onChange={e => setBody(e.target.value)}
-        onBlur={updateNote}
-        placeholder="No rush, just jot something down"
-        /> */}
         {editComponent}
         </div>
-        {/* <Editor /> */}
-        {/* <div className="markdown-preview"
-        onClick={(e) => handleClick(e)}>
-        <ReactMarkdown>{note.body}</ReactMarkdown>
-        </div> */}
-        {/* <div>
-          <RichEditorExample
-          editorState={editorState}
-          onEditorStateChange={setEditorState}
-          noteStyle={note.title}
-          />
-        </div> */}
+      </div>
+      <div className="note-tags-div">
+        Tags: 
+        {note.tags.map(tag => (
+          <div className="note-single-tag"
+          style={{backgroundColor: tag.color}}>
+            {tag.title}
+          </div>
+        ))}
       </div>
     </div>
   )

@@ -27,26 +27,34 @@ function SideBar() {
     history.push(`/notes/${note.id}`);
   }
 
+  console.log("SINGLE NOTE: ", singleNote);
   useEffect(() => {
-    if (Object.values(singleNote) === 0) {
+    if (Object.values(singleNote).length === 0) {
       const notes = user.notes;
       const note = notes[notes.length - 1];
       dispatch(getSingleNote(note.id));
+      // setLoadedNotes(true);
+
     }
   }, [dispatch]);
 
-  useEffect(async () => {
-    if (singleNote === undefined) {
-      const date = new Date().toISOString().slice(0, 10);
-      const note = await dispatch(createNote({
-        title: "Untitled",
-        body: `Double click here to edit your note!\n\nYou can add markdown in your note!\n\n ### Like this header`,
-        created_at: date,
-        updated_at: date
-      }))
-      dispatch(getSingleNote(note));
-    }
-  }, []);
+  // useEffect(() => {
+  //   (async function() {
+  //     console.log("Inside USEEFFECT");
+  //     if (singleNote === undefined) {
+  //       console.log("SINGLENOTE IS UNDEFINED");
+  //       const date = new Date().toISOString().slice(0, 10);
+  //       const note = await dispatch(createNote({
+  //         title: "Untitled",
+  //         body: `Double click here to edit your note!\n\nYou can add markdown in your note!\n\n ### Like this header`,
+  //         created_at: date,
+  //         updated_at: date
+  //       }))
+  //       console.log("NOTE FROM USEEFFECT: ", note);
+  //       dispatch(getSingleNote(note.id));
+  //     }
+  //   })();
+  // }, []);
 
   useEffect(() => {
     if (dropdownClass === "hidden") return;
@@ -93,6 +101,7 @@ function SideBar() {
     setOpenTags(!openTags);
   }
 
+  // if (!loadedNotes) return null;
   return (
     <nav className="sidebar">
     <div className="sidebar-wrapper">
@@ -120,7 +129,7 @@ function SideBar() {
 
         </div>
         <div className="sidebar-notes">
-          <NavLink exact to={`/notes/${singleNote.id}`}> <i className="fa-solid fa-note-sticky"></i>Notes</NavLink>
+          <NavLink exact to={`/notes/${singleNote?.id}`}> <i className="fa-solid fa-note-sticky"></i>Notes</NavLink>
         </div>
         <div onClick={toggleTasks}className="sidebar-tags">
         <i className="fa-solid fa-tag"></i>Tags

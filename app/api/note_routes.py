@@ -25,6 +25,16 @@ def get_single_note(note_id):
   note = Note.query.get(note_id)
   return note.single_note()
 
+@note_routes.route("<int:note_id>/tags")
+@login_required
+def get_notes_with_tag(note_id):
+  """
+  Return the tags accociated with a note
+  """
+  note = Note.query.get(note_id)
+  return {"Tags": [tag.to_dict() for tag in note.tags]}
+
+
 @note_routes.route("", methods=["POST"])
 @login_required
 def create_note():

@@ -1,32 +1,44 @@
 .notebody-wrapper {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 95%;
   overflow: hidden;
   padding: 20px;
+  padding-bottom: 10px;
 }
 
 .note-meat {
   display: flex;
   flex-direction: column;
   height: 90vh;
-  width: 95%;
+  width: 100%;
 }
 .notebody-title {
   height: 30px;
   font-size: 22px;
   resize: none;
   border-bottom: none;
+  border: none;
   padding-bottom: 10px;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.notebody-body {
+.notebody-title:focus {
+  border: 1px solid grey;
+}
+
+.notebody-body-div {
+  width: 100%;
   height: 100%;
+}
+
+.notebody-body {
+  height: 95%;
   font-size: 16px;
   resize: none;
-  border-top: none;
+  /* border-top: none; */
   font-family: Arial, Helvetica, sans-serif;
+  width: 99%;
 }
 
 textarea {
@@ -46,4 +58,19 @@ textarea {
   padding-left: 10px;
   cursor: pointer ;
   color: teal;
+}
+
+.note-tags-div {
+  margin-top: -5px;
+  display: flex;
+  flex-direction: row;
+  overflow-wrap: break-word;
+}
+
+.note-single-tag {
+  padding: 3px;
+  border-radius: 10px;
+  border: 0.5px solid grey;
+  margin: 0px 4px;
+  margin-top: -3px;
 }

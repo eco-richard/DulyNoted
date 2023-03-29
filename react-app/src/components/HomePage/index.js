@@ -29,6 +29,7 @@ function HomePage() {
         src={BACKGROUND_IMAGE_URL}
         alt="" />
       </div>
+      <div className="home-notes-and-scratchpad">
       <div className="home-notes-div">
         <div className="home-notes-title">
           NOTES
@@ -41,6 +42,7 @@ function HomePage() {
       </div>
       <div className="scratch-pad-div">
         <ScratchPad />
+      </div>
       </div>
     </div>
     </div>

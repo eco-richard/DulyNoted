@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { useParams } from "react-router-dom";
 import { getSingleNote, editNote } from "../../store/notes";
 import { EditorState, convertFromRaw, convertToRaw, ContentState } from "draft-js";
 import OpenModalButton from '../OpenModalButton';
 import MoveNoteForm from "../MoveNoteForm";
-import RichEditorExample from "../RichEditor";
+// import RichEditorExample from "../RichEditor";
+// import Editor from "../Editor";
+import ReactMarkdown from "react-markdown";
 
 import './NoteBody.css'
 import { getNotebooks } from "../../store/notebooks";
@@ -13,15 +15,15 @@ import { getNotebooks } from "../../store/notebooks";
 function NoteBody({ note }) {
   const dispatch = useDispatch();
   const params = useParams();
-  const [title, setTitle] = useState(note.title || "");
+  const [title, setTitle] = useState(note?.title || "");
+  const [isEditable, setIsEditable] = useState(false);
 
-
-
+  console.log("NOTE : ", note);
   let noteBody;
-  if (note.body === null) {
+  if (note?.body === null) {
     noteBody = "";
   } else {
-    noteBody = note.body;
+    noteBody = note?.body;
   }
   console.log("NOTEBODY: ", noteBody);
   // console.log("NOTEBODY: ", noteBody);
@@ -39,9 +41,10 @@ function NoteBody({ note }) {
   useEffect(() => {
     if (note.id !== params.noteId) {
       dispatch(getSingleNote(params.noteId));
+      setIsEditable(false);
     }
     // dispatch(getSingleNote(note.id));
-  }, [dispatch, note.id])
+  }, [dispatch, note?.id])
 
   useEffect(() => {
     setTitle(note.title);
@@ -53,7 +56,7 @@ function NoteBody({ note }) {
     const date = new Date().toISOString().slice(0, 10);
     // console.log("UPDATING");
     const newBody = editorState?.getCurrentContent().getPlainText();
-    noteStyle = JSON.stringify(convertToRaw(editorState.getCurrentContent()));
+    // noteStyle = JSON.stringify(convertToRaw(editorState.getCurrentContent()));
     console.log("Body: ", newBody);
     await dispatch(editNote(note.id, {
       title,
@@ -64,6 +67,33 @@ function NoteBody({ note }) {
     dispatch(getSingleNote(note.id))
     dispatch(getNotebooks());
   }
+
+  const handleClick = (e) => {
+    console.log("EVENT: ", e);
+    console.log("EVENT DETAIL: ", e.detail);
+    if (e.detail === 2) {
+      setIsEditable(!isEditable);
+    }
+  }
+
+  const editComponent = isEditable ? (
+    <textarea
+      className="notebody-body"
+      value={body}
+      onClick={(e) => handleClick(e)}
+      onChange={e => setBody(e.target.value)}
+      onBlur={updateNote}
+      placeholder="No rush, just jot something down"
+    />
+  ) : (
+    <ReactMarkdown>{note.body}</ReactMarkdown>
+  )
+
+  useEffect(() => {
+    if (isEditable === false) {
+      updateNote();
+    }
+  }, [isEditable]);
 
   return (
     <div className="notebody-wrapper">
@@ -82,27 +112,26 @@ function NoteBody({ note }) {
       <div className="note-meat"
       onMouseLeave={updateNote}
       >
-         <textarea
+        <textarea
         className="notebody-title"
         value={title}
         onChange={e => setTitle(e.target.value)}
         onBlur={updateNote}
         placeholder="Title"
         />
-        <textarea
-        className="notebody-body"
-        value={body}
-        onChange={e => setBody(e.target.value)}
-        onBlur={updateNote}
-        placeholder="No rush, just jot something down"
-        />
-        {/* <div>
-          <RichEditorExample
-          editorState={editorState}
-          onEditorStateChange={setEditorState}
-          noteStyle={note.title}
-          />
-        </div> */}
+        <div className="notebody-body-div"
+        onClick={(e) => handleClick(e)}>
+        {editComponent}
+        </div>
+      </div>
+      <div className="note-tags-div">
+        Tags: 
+        {note.tags.map(tag => (
+          <div className="note-single-tag"
+          style={{backgroundColor: tag.color}}>
+            {tag.title}
+          </div>
+        ))}
       </div>
     </div>
   )

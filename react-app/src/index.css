@@ -1,12 +1,24 @@
 /* TODO Add site wide styles */
 
-a:visited {
+a {
   text-decoration: none;
-  color: rgb(204, 204, 204);
+}
+a:visited {
+  all: unset;
+  text-decoration: none;
+  color: rgb(204,   204, 204);
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 body {
   margin: 0px;
+}
+
+* {
+  word-break: break-word;
 }
 /*
 #root {

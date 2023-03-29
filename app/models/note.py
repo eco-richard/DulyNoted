@@ -1,10 +1,11 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+from .tables import notes_tags
 
 class Note(db.Model):
   __tablename__ = 'notes'
 
   if environment == "production":
-    __table_args__ = {'schema': SCHEMA}
+      __table_args__ = {'schema': SCHEMA}
 
   # Database columns
   id = db.Column(db.Integer, primary_key=True)
@@ -18,6 +19,7 @@ class Note(db.Model):
   # Relationships
   user = db.relationship("User", back_populates="notes")
   notebook = db.relationship("Notebook", back_populates="notes")
+  tags = db.relationship("Tag", secondary=notes_tags, back_populates="notes")
 
   def simple_note(self):
     return {
@@ -34,6 +36,7 @@ class Note(db.Model):
       "notebook": self.notebook.simple_notebook() if self.notebook != None else "",
       "title": self.title,
       "body": self.body,
+      "tags": [tag.simple_tag() for tag in self.tags],
       "created_at": self.created_at,
       "updated_at": self.updated_at,
     }
@@ -42,6 +45,7 @@ class Note(db.Model):
     return {
       "id": self.id,
       "user": self.user.simple_user(),
+      "tags": [tag.simple_tag() for tag in self.tags],
       "notebook": self.notebook.simple_notebook() if self.notebook != None else "",
       "title": self.title,
       "body": self.body,

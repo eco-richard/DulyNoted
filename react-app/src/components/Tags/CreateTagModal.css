@@ -1,0 +1,40 @@
+
+.create-tag-modal-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.create-tag-modal-top-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0px 25px;
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
+
+.create-tag-close-button button{
+  all: unset;
+  cursor: pointer;
+}
+
+.create-tag-modal-title-div {
+  font-size: 20px;
+}
+
+.create-tag-modal-description {
+  padding: 0px 25px;
+  margin-bottom: 25px;
+}
+
+.create-tag-modal-body {
+  margin: 0px 28px;
+}
+
+.create-tag-title-div {
+  padding: 5px;
+}
+
+.create-tag-color-div {
+  padding: 5px;
+}

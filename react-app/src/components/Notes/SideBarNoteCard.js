@@ -9,10 +9,8 @@ function SideBarNoteCard({ note, fromNotebook, notebook }) {
   const history = useHistory();
   const [deleteClass, setDeleteClass] = useState("sbnc-delete-div-hidden")
 
-  console.log("Note: ", note);
   const tags = note.tags.length > 3 ? note.tags.slice(2) : note.tags;
 
-  console.log("TAGS: ", tags);
   function newNoteClick(e) {
     e.preventDefault();
     dispatch(getSingleNote(note.id))
@@ -56,7 +54,6 @@ function SideBarNoteCard({ note, fromNotebook, notebook }) {
     } else {
       tagURL = tag.title;
     }
-    console.log("IN HANDLE TAG CLICK");
     history.push(`/notes/tags/${tagURL}`)
   }
 

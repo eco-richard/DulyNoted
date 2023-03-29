@@ -15,7 +15,6 @@ function SideBar() {
   const [dropdownClass, setDropDownClass] = useState("hidden");
   const [openTags, setOpenTags] = useState(false);
   const [loadedNotes, setLoadedNotes] = useState(false);
-  console.log("USER: ", user);
   const createNewNote = async () => {
     const date = new Date().toISOString().slice(0, 10);
     const note = await dispatch(createNote({
@@ -24,7 +23,7 @@ function SideBar() {
       created_at: date,
       updated_at: date
     }))
-    dispatch(getSingleNote(note));
+    dispatch(getSingleNote(note.id));
     history.push(`/notes/${note.id}`);
   }
 
@@ -35,6 +34,19 @@ function SideBar() {
       dispatch(getSingleNote(note.id));
     }
   }, [dispatch]);
+
+  useEffect(async () => {
+    if (singleNote === undefined) {
+      const date = new Date().toISOString().slice(0, 10);
+      const note = await dispatch(createNote({
+        title: "Untitled",
+        body: `Double click here to edit your note!\n\nYou can add markdown in your note!\n\n ### Like this header`,
+        created_at: date,
+        updated_at: date
+      }))
+      dispatch(getSingleNote(note));
+    }
+  }, []);
 
   useEffect(() => {
     if (dropdownClass === "hidden") return;

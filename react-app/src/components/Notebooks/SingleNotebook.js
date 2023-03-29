@@ -15,7 +15,6 @@ function SingleNotebook() {
 
   const notebook = notebooks[params.notebookId];
 
-  console.log("SINGLE NOTEBOOK");
   useEffect(() => {
     dispatch(getNotebooks())
     dispatch(getAllNotes());

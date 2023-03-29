@@ -61,7 +61,6 @@ export function getAllNotes() {
 
 export function getSingleNote(noteId) {
   return async (dispatch) => {
-    console.log("NOTEID FROM THUNK: ", noteId);
     const res = await fetch(`/api/notes/${noteId}`)
 
     if (!res.ok) {

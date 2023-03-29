@@ -17,7 +17,6 @@ function Tags(prop: TagsProps) {
     const tags: TagStructure[] = Object.values(useSelector((state: any) => state.tag.allTags));
     const [loaded, setLoaded] = useState(false);
     const [newTagLabel, setNewTagLabel] = useState(false);
-    console.log("TAGS: ", tags);
 
     useEffect(() => {
         dispatch(getAllTagsThunk());
@@ -38,7 +37,6 @@ function Tags(prop: TagsProps) {
     }
 
     const handleTagClick = (tag: TagStructure) => {
-        console.log("TAG : ", tag);
         const message = `
         Are you sure you want to delete this tag?
         Any notes connected to this tag won't be deleted.

@@ -25,10 +25,6 @@ function Notes() {
   const [fromNotebook, setFromNotebook] = useState(location.pathname.includes("notebook"));
   const [usesTags, setUsesTags] = useState(location.pathname.includes("tags"));
   const [loadedNotes, setLoadedNotes] = useState(false);
-  console.log("PARAMS: ", params);
-  console.log("NOTES: ", notes);
-  console.log("TAGS OUTSIDE:: ", tags);
-  console.log("SINGLE TAG: ", singleTag);
   const [tagName, setTagName] = useState(convertTagURL(tagTitle) || "");
 
   useEffect(() => {
@@ -42,7 +38,6 @@ function Notes() {
     }
   }, [location.pathname, tagTitle])
 
-  console.log("TAGNAME: ", tagName);
   useEffect(() => {
     dispatch(getAllNotes());
     dispatch(getNotebooks());
@@ -63,7 +58,6 @@ function Notes() {
 
     if (Object.values(singleNote).length === 0) {
       if (notes.length) {
-        console.log("notes: ", notes);
         dispatch(getSingleNote(notes[notes.length - 1].id));
       }
     }

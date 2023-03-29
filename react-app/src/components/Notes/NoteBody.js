@@ -18,21 +18,16 @@ function NoteBody({ note }) {
   const [title, setTitle] = useState(note?.title || "");
   const [isEditable, setIsEditable] = useState(false);
 
-  console.log("NOTE : ", note);
   let noteBody;
   if (note?.body === null) {
     noteBody = "";
   } else {
     noteBody = note?.body;
   }
-  console.log("NOTEBODY: ", noteBody);
-  // console.log("NOTEBODY: ", noteBody);
   const [body, setBody] = useState(noteBody);
   const [editorState, setEditorState] = useState(() => {
     if (noteBody) {
       const contentBody = ContentState.createFromText(noteBody)
-      console.log("CONTENT BODY:", contentBody)
-      console.log(EditorState.createWithContent(contentBody))
       return EditorState.createWithContent(contentBody);
     }
     return EditorState.createEmpty()
@@ -54,10 +49,8 @@ function NoteBody({ note }) {
   let noteStyle;
   const updateNote = async () => {
     const date = new Date().toISOString().slice(0, 10);
-    // console.log("UPDATING");
     const newBody = editorState?.getCurrentContent().getPlainText();
     // noteStyle = JSON.stringify(convertToRaw(editorState.getCurrentContent()));
-    console.log("Body: ", newBody);
     await dispatch(editNote(note.id, {
       title,
       body,
@@ -69,8 +62,6 @@ function NoteBody({ note }) {
   }
 
   const handleClick = (e) => {
-    console.log("EVENT: ", e);
-    console.log("EVENT DETAIL: ", e.detail);
     if (e.detail === 2) {
       setIsEditable(!isEditable);
     }
@@ -125,7 +116,7 @@ function NoteBody({ note }) {
         </div>
       </div>
       <div className="note-tags-div">
-        Tags: 
+        Tags:
         {note.tags.map(tag => (
           <div className="note-single-tag"
           style={{backgroundColor: tag.color}}>

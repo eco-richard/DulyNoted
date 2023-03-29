@@ -22,7 +22,6 @@ function Notes() {
   const tags = Object.values(useSelector(state => state.tag.allTags));
   const singleTag = useSelector(state => state.tag.singleTag);
   let singleNote = useSelector(state => state.note.sinlgeNote);
-  console.log("SINGLE NOTE AT 25: ", singleNote);
   const [fromNotebook, setFromNotebook] = useState(location.pathname.includes("notebook"))
   const [fromTags, setFromTags] = useState(location.pathname.includes("tags"));
   const [tagName, setTagName] = useState(params.tagTitle || "");
@@ -36,8 +35,6 @@ function Notes() {
     if (loaded && singleNote === undefined) {
       const notes = Object.values(allNotes);
       const note = notes[notes.length - 1];
-      console.log("IN USEEFFECT NOTE: ", note);
-      console.log("IN USEEFFECT NOTE ID: ", note.id);
       dispatch(getSingleNote(note.id));
       setLoadedSingleNote(true);
     }
@@ -93,7 +90,6 @@ function Notes() {
     return null;
   }
 
-  console.log("SINGLENOTE: ", singleNote);
   return (
     <div className='max-container'>
       <SideBar />

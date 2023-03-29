@@ -21,7 +21,6 @@ function ScratchPad() {
 
   const convertScratch = async () => {
     const date = new Date().toISOString().slice(0, 10);
-    console.log("SCRATCH BODY: ", scratchBody);
     const note = await dispatch(createNote({
       title: "Untitled",
       body: scratchBody,

@@ -11,7 +11,7 @@ class Tag(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
     title = db.Column(db.String(255), nullable=False)
-    color = db.Column(db.String(8), nullable=False)
+    color = db.Column(db.String(15), nullable=False)
 
     # Relationships
     # Many-to-Many with notes

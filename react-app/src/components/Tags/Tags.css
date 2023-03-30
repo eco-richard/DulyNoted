@@ -85,4 +85,9 @@
     padding: 5px;
     margin: 5px;
     border-radius: 4px;
+    cursor: pointer;
+}
+
+.single-tag-link-wrapper:hover {
+    text-decoration: underline;
 }

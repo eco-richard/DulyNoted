@@ -110,3 +110,13 @@ function Notes() {
 }
 
 export default Notes;
+
+fetch("/api/notes/2/tags/", {
+  method: "PUT",
+  headers: {"Content-Type": "application/json"},
+  body: {}
+}).then(res => res.json());
+
+fetch("/api/notes/2/tags/3", {
+  method: "DELETE"
+}).then(res => res.json());

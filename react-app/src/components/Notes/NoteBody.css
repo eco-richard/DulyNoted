@@ -10,7 +10,7 @@
 .note-meat {
   display: flex;
   flex-direction: column;
-  height: 90vh;
+  height: 86vh;
   width: 100%;
 }
 .notebody-title {
@@ -65,6 +65,9 @@ textarea {
   display: flex;
   flex-direction: row;
   overflow-wrap: break-word;
+  height: 50px;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .note-single-tag {
@@ -73,4 +76,27 @@ textarea {
   border: 0.5px solid grey;
   margin: 0px 4px;
   margin-top: -3px;
+  cursor: pointer;
+}
+
+.note-single-tag:hover {
+  text-decoration: underline;
+}
+
+.note-tag-add-tag {
+  display: flex;
+  flex-direction: row;
+}
+
+.note-tag-add-tag button {
+  all: unset;
+  cursor: pointer;
+  color: teal;
+  padding: 5px;
+}
+
+.note-tag-add-tag button:hover{
+  all: unset;
+  cursor: pointer;
+  padding: 5px;
 }

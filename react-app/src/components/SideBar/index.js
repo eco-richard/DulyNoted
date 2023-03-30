@@ -27,7 +27,6 @@ function SideBar() {
     history.push(`/notes/${note.id}`);
   }
 
-  console.log("SINGLE NOTE: ", singleNote);
   useEffect(() => {
     if (Object.values(singleNote).length === 0) {
       const notes = user.notes;

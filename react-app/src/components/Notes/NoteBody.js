@@ -23,7 +23,7 @@ function NoteBody({ note }) {
   const [title, setTitle] = useState(note?.title || "");
   const [isEditable, setIsEditable] = useState(false);
   const [openAddTag, setOpenAddTag] = useState(false);
-  const [noteTag, setNoteTag] = useState();
+  const [noteTag, setNoteTag] = useState(undefined);
   const [firstLoad, setFirstLoad] = useState(false);
 
   const options = [];
@@ -120,13 +120,20 @@ function NoteBody({ note }) {
   }
 
   for (const tag of tags) {
-    options.push({
-      value: tag,
-      label: `${tag.title}`
-    })
+    const noteTagIDs = [];
+    for (const tag of note.tags) {
+      noteTagIDs.push(tag.id);
+    }
+    if (!noteTagIDs.includes(tag.id)) {
+      options.push({
+        value: tag,
+        label: `${tag.title}`
+      })
+    }
   }
+
   useEffect(() => {
-    if (firstLoad) {
+    if (firstLoad && noteTag) {
       fetch(`/api/notes/${note.id}/tags/${noteTag.id}`, {
         method: "PUT",
         headers: {"Content-Type": "application/json"},
@@ -194,13 +201,16 @@ function NoteBody({ note }) {
           {openAddTag &&
           <div className="add-tag-select-div">
             <Select
-              closeMenuOnSelect={false}
-              components={animatedComponents}
+              closeMenuOnSelect={true}
+              // components={animatedComponents}
+              menuPlacement="top"
               // isMulti
+              menuIsOpen={true}
               options={options}
               onChange={(e) => {
                 setNoteTag(e.value);
-                e = {};
+                e.value = "";
+                setOpenAddTag(false)
               }}
             />
           </div>

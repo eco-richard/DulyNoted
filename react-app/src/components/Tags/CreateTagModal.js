@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import { createTagThunk, getSingleTagThunk } from "../../store/tags";
@@ -9,6 +9,7 @@ import './CreateTagModal.css';
 function CreateTagModal() {
     const dispatch = useDispatch();
     const history = useHistory();
+    const note = useSelector(state => state.note.singleNote);
     const [title, setTitle] = useState("");
     const [color, setColor] = useState("");
     const [createDisabled, setCreateDisabled] = useState(true);
@@ -36,7 +37,7 @@ function CreateTagModal() {
         if (returnCode === 200) {
             dispatch(getSingleTagThunk(tag.id));
             closeModal();
-            history.push(`/notes/tags/${tag.title}`);
+            // history.push(`/notes`);
         }
     }
 
